@@ -1,21 +1,22 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { CountriesComponent } from './pages/countries/countries.component';
-import { CountryComponent } from './pages/countries/country/country.component';
-import { ImageComponent } from './pages/image/image.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {DashboardComponent} from './pages/dashboard/dashboard.component';
+import {CountriesComponent} from './pages/countries/countries.component';
+import {CountryComponent} from './pages/countries/country/country.component';
+import {ImageComponent} from './pages/image/image.component';
 
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'countries', component: CountriesComponent },
-  { path: 'countries/:id', component: CountryComponent },
-  { path: 'image', component: ImageComponent },
-  { path: '*', component: DashboardComponent }
+  {path: 'dashboard', component: DashboardComponent, pathMatch: 'full'},
+  {path: 'countries', component: CountriesComponent, pathMatch: 'full'},
+  {path: 'countries/:id', component: CountryComponent, pathMatch: 'full'},
+  {path: 'image', component: ImageComponent, pathMatch: 'full'},
+  {path: '**', redirectTo: 'dashboard'}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
