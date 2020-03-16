@@ -7,6 +7,7 @@ import { ImageComponent } from './pages/image/image.component';
 
 
 const routes: Routes = [
+  { path: '', component: DashboardComponent },
   { path: 'countries', component: CountriesComponent },
   { path: 'countries/:id', component: CountryComponent },
   { path: 'image', component: ImageComponent },

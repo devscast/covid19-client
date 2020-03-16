@@ -20,10 +20,10 @@ export class ApiService {
   }
 
   getCountries(): Observable<Countries> {
-    return this.http.get<Countries>(this.BASE_URL + '/countries')
+    return this.http.get<Countries>(this.BASE_URL + 'countries')
   }
 
   getCountry(name: string): Observable<Country> {
-    return this.http.get<Country>(this.BASE_URL + `/countries/${name}`);
+    return this.http.get<Country>(this.BASE_URL + `countries/${name}`);
   }
 }

@@ -9,6 +9,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CountriesComponent } from './pages/countries/countries.component';
 import { ImageComponent } from './pages/image/image.component';
 import { CountryComponent } from './pages/countries/country/country.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FilterPipe } from './pages/countries/filter.pipe';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,12 +22,16 @@ import { CountryComponent } from './pages/countries/country/country.component';
     DashboardComponent,
     CountriesComponent,
     ImageComponent,
-    CountryComponent
+    CountryComponent,
+    LoaderComponent,
+    FilterPipe
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
