@@ -1,5 +1,5 @@
 <nav class="primary-bg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
         <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
                 <div class="flex-shrink-0 text-white font-bold">
@@ -7,9 +7,9 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline">
-                        <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white primary-active focus:outline-none focus:text-white focus:bg-gray-700">Général</a>
-                        <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Pays</a>
-                        <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Image</a>
+                        <a [routerLink]="[ '/' ]" routerlinkactive="primary-active" class="px-3 py-2 rounded-md text-sm font-medium text-white focus:outline-none focus:text-white focus:bg-gray-700">Général</a>
+                        <a [routerLink]="[ '/countries']" routerlinkactive="primary-active" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Pays</a>
+                        <a [routerLink]="[ '/image']" routerlinkactive="primary-active" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Image</a>
                     </div>
                 </div>
             </div>
@@ -25,9 +25,9 @@
     </div>
     <div class="hidden md:hidden">
         <div class="px-2 pt-2 pb-3 sm:px-3">
-            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white primary-active focus:outline-none focus:text-white focus:bg-gray-700">Général</a>
-            <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Pays</a>
-            <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Image</a>
+            <a [routerLink]="[ '/' ]" routerlinkactive="primary-active" class="px-3 py-2 rounded-md text-sm font-medium text-white focus:outline-none focus:text-white focus:bg-gray-700">Général</a>
+            <a [routerLink]="[ '/countries']" routerlinkactive="primary-active" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Pays</a>
+            <a [routerLink]="[ '/image']" routerlinkactive="primary-active" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Image</a>
         </div>
     </div>
 </nav>
