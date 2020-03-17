@@ -29,7 +29,7 @@
         <tbody class="bg-white">
         <tr *ngFor="let country of data | filter : searchText">
           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-            <a routerLink="/countries/{{country.id}}">
+            <a routerLink="/countries/{{country.id}}" [state]="{data: country}">
               <div class="flex items-center">
                 <div class="flex-shrink-0 h-10 w-10">
                   <img class="h-10 w-10" src="https://www.countryflags.io/{{ country.id }}/flat/64.png"

@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Dashboard} from 'src/app/api.model';
+import {CountriesList, Country, Dashboard} from 'src/app/api.model';
 import {ApiService} from 'src/app/api.service';
 
 @Component({
