@@ -13,6 +13,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './pages/countries/filter.pipe';
 import {FormsModule} from '@angular/forms';
+import { MapComponent } from './pages/map/map.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {FormsModule} from '@angular/forms';
     ImageComponent,
     CountryComponent,
     LoaderComponent,
-    FilterPipe
+    FilterPipe,
+    MapComponent
   ],
     imports: [
         BrowserModule,

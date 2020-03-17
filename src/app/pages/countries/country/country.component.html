@@ -1,45 +1,47 @@
-<app-loader *ngIf="loading"></app-loader>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 mt-10">
+  <app-loader *ngIf="loading"></app-loader>
 
-<div class="bg-white shadow overflow-hidden sm:rounded-lg" *ngIf="data">
-  <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-    <h3 class="text-lg leading-6 font-medium text-gray-900">
-      <img class="h-10 w-10" src="https://www.countryflags.io/{{params.id}}/flat/64.png" alt="{{ params.id }}"/>
-      <span>{{ name }}</span>
-    </h3>
-    <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-      {{ params.id }}
-    </p>
-  </div>
-  <div>
-    <dl>
-      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm leading-5 font-medium text-gray-500">
-          Confirmés
-        </dt>
-        <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-          {{ data.confirmed.value }}
-        </dd>
-      </div>
-      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm leading-5 font-medium text-gray-500">
-          Guérisons
-        </dt>
-        <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-          {{ data.recovered.value }}
-        </dd>
-      </div>
-      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm leading-5 font-medium text-gray-500">
-          Morts
-        </dt>
-        <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-          {{ data.deaths.value }}
-        </dd>
-      </div>
-      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <span class="text-grey-700 text-lg font-bold">Mise à jour : {{ updatedAt }}</span> <br>
-        <span class="text-gray-500 text-md">Actualisation toutes les 5 mins.</span>
-      </div>
-    </dl>
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg" *ngIf="data">
+    <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <img class="h-10 w-10" src="https://www.countryflags.io/{{params.id}}/flat/64.png" alt="{{ params.id }}"/>
+        <span>{{ name }}</span>
+      </h3>
+      <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+        {{ params.id }}
+      </p>
+    </div>
+    <div>
+      <dl>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Confirmés
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            {{ data.confirmed.value }}
+          </dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Guérisons
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            {{ data.recovered.value }}
+          </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Morts
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            {{ data.deaths.value }}
+          </dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <span class="text-grey-700 text-lg font-bold">Mise à jour : {{ updatedAt }}</span> <br>
+          <span class="text-gray-500 text-md">Actualisation toutes les 5 mins.</span>
+        </div>
+      </dl>
+    </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {CountriesComponent} from './pages/countries/countries.component';
 import {CountryComponent} from './pages/countries/country/country.component';
 import {ImageComponent} from './pages/image/image.component';
+import {MapComponent} from './pages/map/map.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: 'countries', component: CountriesComponent, pathMatch: 'full'},
   {path: 'countries/:id', component: CountryComponent, pathMatch: 'full'},
   {path: 'image', component: ImageComponent, pathMatch: 'full'},
+  {path: 'map', component: MapComponent, pathMatch: 'full'},
   {path: '**', redirectTo: 'dashboard'}
 ];
 

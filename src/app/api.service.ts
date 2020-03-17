@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Dashboard, Countries, Country } from './api.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Dashboard, Countries, Country, Case} from './api.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,8 @@ export class ApiService {
 
   static readonly SUMMARY_IMAGE = 'https://covid19.mathdro.id/api/og';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
 
   getDashboard(): Observable<Dashboard> {
@@ -20,10 +21,14 @@ export class ApiService {
   }
 
   getCountries(): Observable<Countries> {
-    return this.http.get<Countries>(this.BASE_URL + 'countries')
+    return this.http.get<Countries>(this.BASE_URL + 'countries');
   }
 
   getCountry(name: string): Observable<Country> {
     return this.http.get<Country>(this.BASE_URL + `countries/${name}`);
+  }
+
+  getConfirmed(): Observable<Case[]> {
+    return this.http.get<Case[]>(this.BASE_URL + 'confirmed');
   }
 }
