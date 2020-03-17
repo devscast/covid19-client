@@ -12,6 +12,7 @@ import sweetAlert from 'sweetalert2';
 export class CountryComponent implements OnInit, OnDestroy {
   params: Params;
   loading: boolean;
+  error = false;
   name: string;
   data: Country;
   timer: any;
@@ -48,8 +49,13 @@ export class CountryComponent implements OnInit, OnDestroy {
           this.loading = false;
         },
         e => {
-          sweetAlert.fire('Error', e.message, 'error');
+          sweetAlert.fire(
+            'Désolé',
+            'Données temporairement Indisponible, Veuillez consulter la Carte En Attendant',
+            'warning'
+          );
           this.loading = false;
+          this.error = true;
         }
       );
   }

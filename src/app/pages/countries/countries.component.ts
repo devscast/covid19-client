@@ -9,8 +9,8 @@ import sweetAlert from 'sweetalert2';
   styles: []
 })
 export class CountriesComponent implements OnInit {
-
   loading: boolean;
+  error = false;
   searchText: string;
   data: CountriesList[];
 
@@ -27,8 +27,13 @@ export class CountriesComponent implements OnInit {
             localStorage.setItem('countries', JSON.stringify(this.data));
             this.loading = false;
           }, e => {
-            sweetAlert.fire('Error', e.message, 'error');
+            sweetAlert.fire(
+              'Oups',
+              'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
+              'warning'
+            );
             this.loading = false;
+            this.error = true;
           }
         );
     } else {

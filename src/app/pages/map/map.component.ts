@@ -14,6 +14,7 @@ export class MapComponent implements OnInit, OnDestroy {
   lng: number;
   data: Case[];
   loading: boolean;
+  error = false;
   timer: any;
 
   constructor(private apiService: ApiService) {
@@ -56,15 +57,23 @@ export class MapComponent implements OnInit, OnDestroy {
                   .addTo(map);
               });
             },
-            e => sweetAlert.fire('Error', e.message, 'error')
+            e => {
+              sweetAlert.fire('Error', 'Impossible de vous géolocaliser, Réessayez plus tard', 'warning');
+              this.error = true;
+            }
           );
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           }).addTo(map);
         },
         e => {
-          sweetAlert.fire('Error', e.message, 'error');
+          sweetAlert.fire(
+            'Oups',
+            'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
+            'warning'
+          );
           this.loading = false;
+          this.error = true;
         }
       );
   }

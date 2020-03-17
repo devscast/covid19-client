@@ -1,6 +1,20 @@
 <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-10">
   <app-loader *ngIf="loading"></app-loader>
 
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg" *ngIf="error">
+    <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+      <div class="">
+        <img class="h-10 w-10" src="https://www.countryflags.io/{{params.id}}/flat/64.png" alt="{{ params.id }}"/>
+        <span class="text-lg leading-6 font-medium text-gray-900 mt-5">
+          Désolé les données pour : {{name}}
+        </span> <br>
+        <span class="text-md text-gray-600">
+          Sont temporairement indisponibles, consultez la carte ou réessayez plus tard.
+        </span>
+      </div>
+    </div>
+  </div>
+
   <div class="bg-white shadow overflow-hidden sm:rounded-lg" *ngIf="data">
     <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-gray-900">

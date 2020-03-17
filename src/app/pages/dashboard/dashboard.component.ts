@@ -11,6 +11,7 @@ import sweetAlert from 'sweetalert2';
 export class DashboardComponent implements OnInit, OnDestroy {
   loading: boolean;
   data: Dashboard;
+  error = false;
   timer: any;
 
   constructor(private apiService: ApiService) {
@@ -29,8 +30,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
           this.loading = false;
         },
         e => {
-          sweetAlert.fire('Error', e.message, 'error');
+          sweetAlert.fire(
+            'Oups',
+            'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
+            'error'
+          );
           this.loading = false;
+          this.error = true;
         }
       );
   }
