@@ -13,9 +13,4 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  toggleOpen() {
-    this.open = !this.open;
-  }
-
 }

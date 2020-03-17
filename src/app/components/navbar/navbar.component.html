@@ -9,12 +9,12 @@
           <div class="ml-10 flex items-baseline">
             <a routerLink="/dashboard" routerLinkActive="bg-green-500 text-white" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-green-700 focus:outline-none">Dashboard</a>
             <a routerLink="/countries" routerLinkActive="bg-green-500 text-white" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-green-700 focus:outline-none">Pays</a>
-            <a routerLink="/images" routerLinkActive="bg-green-500 text-white" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-green-700 focus:outline-none">Image</a>
+            <a routerLink="/image" routerLinkActive="bg-green-500 text-white" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-green-700 focus:outline-none">Image</a>
           </div>
         </div>
       </div>
       <div class="-mr-2 flex md:hidden">
-        <button (click)="toggleOpen()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
+        <button (click)="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
           <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
             <path [ngClass]="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
             <path [ngClass]="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -27,7 +27,7 @@
     <div class="px-2 pt-2 pb-3 sm:px-3">
       <a routerLink="/dashboard" routerLinkActive="bg-green-500 text-white" class="ml-4 block px-3 py-2 rounded-md text-sm font-medium text-white hover:text-white hover:bg-green-700 focus:outline-none">Dashboard</a>
       <a routerLink="/countries" routerLinkActive="bg-green-500 text-white" class="ml-4 block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-green-700 focus:outline-none">Pays</a>
-      <a routerLink="/images" routerLinkActive="bg-green-500 text-white" class="ml-4 block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-green-700 focus:outline-none">Image</a>
+      <a routerLink="/image" routerLinkActive="bg-green-500 text-white" class="ml-4 block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-green-700 focus:outline-none">Image</a>
     </div>
   </div>
 </nav>

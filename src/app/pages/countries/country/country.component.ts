@@ -18,16 +18,18 @@ export class CountryComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private apiService: ApiService) {
     this.route.params.subscribe(p => {
       this.params = p;
-      this.name = (history.state.data)
-        ? history.state.data.country.name
-        : this.getCountryName(p.id).name;
+      this.name = (typeof history.state.data !== 'undefined')
+        ? history.state.data.name
+        : this.getCountryName(p.id);
     });
   }
 
   getCountryName(id: string) {
     if (localStorage.getItem('countries')) {
-      const countries = JSON.parse(localStorage.getItem('countries'));
-      return countries.find(c => c.id === id);
+      const country = JSON
+        .parse(localStorage.getItem('countries'))
+        .find(c => c.id === id);
+      return (typeof country !== 'undefined') ? country.name : '';
     }
     return '';
   }
