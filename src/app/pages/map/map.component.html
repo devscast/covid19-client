@@ -1,7 +1,7 @@
 <app-loader *ngIf="loading"></app-loader>
 
-<div class="max-w-6xl mx-auto px-4 sm:px-6 mt-10">
-  <app-error *ngIf="error"></app-error>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 mt-10" *ngIf="error">
+  <app-error></app-error>
 </div>
 
 <div class="w-full mx-auto">
