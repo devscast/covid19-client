@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../../api.service';
 import {Country} from '../../../api.model';
+import sweetAlert from 'sweetalert2';
 
 @Component({
   selector: 'app-country',
@@ -41,10 +42,16 @@ export class CountryComponent implements OnInit, OnDestroy {
   load() {
     this.loading = true;
     this.apiService.getCountry(this.params.id)
-      .subscribe(data => {
-        this.data = data;
-        this.loading = false;
-      });
+      .subscribe(
+        data => {
+          this.data = data;
+          this.loading = false;
+        },
+        e => {
+          sweetAlert.fire('Error', e.message, 'error');
+          this.loading = false;
+        }
+      );
   }
 
   ngOnInit(): void {

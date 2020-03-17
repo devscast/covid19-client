@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CountriesList, Country, Dashboard} from 'src/app/api.model';
 import {ApiService} from 'src/app/api.service';
+import sweetAlert from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,10 +23,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
   load() {
     this.loading = true;
     this.apiService.getDashboard()
-      .subscribe(data => {
-        this.data = data;
-        this.loading = false;
-      });
+      .subscribe(
+        data => {
+          this.data = data;
+          this.loading = false;
+        },
+        e => {
+          sweetAlert.fire('Error', e.message, 'error');
+          this.loading = false;
+        }
+      );
   }
 
   ngOnInit(): void {

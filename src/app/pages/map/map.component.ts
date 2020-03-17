@@ -22,28 +22,29 @@ export class MapComponent implements OnInit, OnDestroy {
   load() {
     this.loading = true;
     this.apiService.getConfirmed()
-      .subscribe(data => {
-        this.data = data;
-        this.loading = false;
+      .subscribe(
+        data => {
+          this.data = data;
+          this.loading = false;
 
-        const map = L.map('map');
-        navigator.geolocation.getCurrentPosition(
-          position => {
-            this.lat = position.coords.latitude;
-            this.lng = position.coords.longitude;
+          const map = L.map('map');
+          navigator.geolocation.getCurrentPosition(
+            position => {
+              this.lat = position.coords.latitude;
+              this.lng = position.coords.longitude;
 
-            map.setView([this.lat, this.lng], 3);
-            const marker = L.marker([this.lat, this.lng]).addTo(map);
-            marker.bindPopup('Moi.');
+              map.setView([this.lat, this.lng], 3);
+              const marker = L.marker([this.lat, this.lng]).addTo(map);
+              marker.bindPopup('Moi.');
 
-            this.data.forEach(zone => {
-              L.circle([zone.lat, zone.long], {
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.3,
-                radius: zone.active + zone.confirmed
-              })
-                .bindPopup(`
+              this.data.forEach(zone => {
+                L.circle([zone.lat, zone.long], {
+                  color: 'red',
+                  fillColor: '#f03',
+                  fillOpacity: 0.3,
+                  radius: zone.active + zone.confirmed
+                })
+                  .bindPopup(`
               <h3>
                 ${zone.countryRegion}
                 <img alt="${zone.iso2}" class="h-10 w-10" src="https://www.countryflags.io/${zone.iso2}/flat/64.png"/>
@@ -52,15 +53,20 @@ export class MapComponent implements OnInit, OnDestroy {
               <b>Guérisons</b>: ${zone.recovered}<br>
               <b>Morts</b>: ${zone.deaths}<br>
             `)
-                .addTo(map);
-            });
-          },
-          e => sweetAlert.fire('Error', e.message, 'error')
-        );
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-      });
+                  .addTo(map);
+              });
+            },
+            e => sweetAlert.fire('Error', e.message, 'error')
+          );
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(map);
+        },
+        e => {
+          sweetAlert.fire('Error', e.message, 'error');
+          this.loading = false;
+        }
+      );
   }
 
   ngOnInit(): void {
