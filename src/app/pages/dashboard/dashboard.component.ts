@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CountriesList, Country, Dashboard} from 'src/app/api.model';
+import {Article, Dashboard} from 'src/app/api.model';
 import {ApiService} from 'src/app/api.service';
 import sweetAlert from 'sweetalert2';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,13 +13,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
   loading: boolean;
   data: Dashboard;
   error = false;
+  articles: Article[];
   timer: any;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private domSanitizer: DomSanitizer) {
   }
 
   get updatedAt() {
     return (new Date(this.data.lastUpdate)).toLocaleString('fr-FR');
+  }
+
+  loadArticles() {
+    this.apiService.getArticles()
+      .subscribe(data => {
+        this.articles = data;
+        this.articles.forEach(a => {
+          if (a.type === 'video') {
+            a.link = this.domSanitizer.bypassSecurityTrustResourceUrl(a.link) as string;
+          }
+        });
+      });
   }
 
   load() {
@@ -43,6 +57,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.load();
+    this.loadArticles();
     this.timer = setInterval(this.load, 300000);
   }
 

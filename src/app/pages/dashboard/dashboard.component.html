@@ -40,49 +40,26 @@
       </div>
     </div>
 
-    <div class="px-2 mb-5 mt-10">
-      <span class="text-grey-700 text-lg font-bold">Vulgarisation</span> <br>
-      <span class="text-gray-500 text-md">Voici quelques ressources pour en savoir plus</span>
-    </div>
-    <div class="mt-10">
-      <div class="grid grid-cols-6 gap-4">
-        <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2 rounded overflow-hidden shadow-lg">
-          <a href="https://www.who.int/fr/emergencies/diseases/novel-coronavirus-2019" target="_blank">
-            <img class="w-full"
-                 alt="image"
-                 src="https://www.who.int/images/default-source/health-topics/coronavirus/gettyimages-1201285261.tmb-1200v.jpg?Culture=en&amp;sfvrsn=cceb04a7_3">
-            <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Rapport Journalier de l'OMS</div>
-              <p class="text-gray-700 text-base">
-                informations officielles du site de l'OMS
-              </p>
+    <div *ngIf="articles">
+      <div class="px-2 mb-5 mt-10">
+        <span class="text-grey-700 text-lg font-bold">Vulgarisation</span> <br>
+        <span class="text-gray-500 text-md">Voici quelques ressources pour en savoir plus</span>
+      </div>
+      <div class="mt-10">
+        <div class="grid grid-cols-6 gap-4">
+          <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2 rounded overflow-hidden shadow-lg" *ngFor="let article of articles">
+            <a *ngIf="article.type === 'post'" href="{{ article.link }}" target="_blank">
+              <img class="w-full" alt="image" src="{{ article.image }}">
+              <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">{{ article.name }}</div>
+              </div>
+            </a>
+            <div *ngIf="article.type === 'video'">
+              <iframe class="w-full" [src]="article.link" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">{{ article.name }}</div>
+              </div>
             </div>
-          </a>
-        </div>
-        <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2 rounded overflow-hidden shadow-lg">
-          <iframe class="w-full" src="https://www.youtube.com/embed/tMkQlEHHP70" frameborder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">C'est quoi le Coronavirus ?</div>
-            <p class="text-gray-700 text-base">
-              un type de virus commun qui infecte l'homme, entraînant généralement une infection des voies respiratoires
-              supérieures (URI)
-            </p>
-          </div>
-        </div>
-        <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2 rounded overflow-hidden shadow-lg">
-          <iframe class="w-full" src="https://www.youtube.com/embed/aL6KCwzdK0E" frameborder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">
-              Que sait-on sur le coronavirus SARS-CoV-2 (responsable de la COVID-19)
-            </div>
-            <p class="text-gray-700 text-base">
-              réponses aux questions que vous m’avez
-              posées sur le nouveau coronavirus récemment apparu en Chine.
-            </p>
           </div>
         </div>
       </div>

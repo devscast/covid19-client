@@ -10,11 +10,12 @@ import {CountriesComponent} from './pages/countries/countries.component';
 import {ImageComponent} from './pages/image/image.component';
 import {CountryComponent} from './pages/countries/country/country.component';
 import {LoaderComponent} from './components/loader/loader.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FilterPipe} from './pages/countries/filter.pipe';
 import {FormsModule} from '@angular/forms';
 import {MapComponent} from './pages/map/map.component';
-import { ErrorComponent } from './components/error/error.component';
+import {ErrorComponent} from './components/error/error.component';
+import {ApiInterceptor} from './api.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,13 @@ import { ErrorComponent } from './components/error/error.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

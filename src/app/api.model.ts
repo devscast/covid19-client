@@ -1,3 +1,5 @@
+import {SafeResourceUrl} from '@angular/platform-browser';
+
 export interface Detail {
   value: number;
   detail: string;
@@ -63,4 +65,12 @@ export interface Country {
   recovered: Detail;
   deaths: Detail;
   lastUpdate: string;
+}
+
+export interface Article {
+  name: string | SafeResourceUrl;
+  link: string;
+  type: string;
+  image?: string;
+  publishedAt: string;
 }
