@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Dashboard, Countries, Country, Case, Article} from './api.model';
+import {Dashboard, Countries, Country, Case, Article, ArticleSource} from './api.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,10 @@ export class ApiService {
 
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.NEWS_BASE_URL + 'articles');
+  }
+
+  getSources(): Observable<ArticleSource[]> {
+    return this.http.get<ArticleSource[]>(this.NEWS_BASE_URL + 'sources');
   }
 
   getCountries(): Observable<Countries> {

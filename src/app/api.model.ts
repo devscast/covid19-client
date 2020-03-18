@@ -74,3 +74,8 @@ export interface Article {
   image?: string;
   publishedAt: string;
 }
+
+export interface ArticleSource {
+  name: string;
+  link: string;
+}

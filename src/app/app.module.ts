@@ -16,6 +16,7 @@ import {FormsModule} from '@angular/forms';
 import {MapComponent} from './pages/map/map.component';
 import {ErrorComponent} from './components/error/error.component';
 import {ApiInterceptor} from './api.interceptor';
+import { SourcesComponent } from './pages/sources/sources.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {ApiInterceptor} from './api.interceptor';
     FilterPipe,
     MapComponent,
     ErrorComponent,
+    SourcesComponent,
   ],
   imports: [
     BrowserModule,
