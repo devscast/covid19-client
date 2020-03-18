@@ -22,6 +22,7 @@ export interface Dashboard {
 }
 
 export interface Case {
+  url: string;
   provinceState?: string;
   countryRegion: string;
   lastUpdate: number;

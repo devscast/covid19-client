@@ -4,7 +4,7 @@
   <div class="bg-white shadow overflow-hidden sm:rounded-lg" *ngIf="error">
     <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
       <div class="">
-        <img class="h-10 w-10" src="https://www.countryflags.io/{{params.id}}/flat/64.png" alt="{{ params.id }}"/>
+        <img class="h-10 w-10" src="https://www.countryflags.io/{{data.iso2}}" alt="{{ data.countryRegion }}"/>
         <span class="text-lg leading-6 font-medium text-gray-900 mt-5">
           Désolé les données pour : {{data.countryRegion}} {{data.provinceState}}
         </span> <br>
@@ -18,11 +18,11 @@
   <div class="bg-white shadow overflow-hidden sm:rounded-lg" *ngIf="data">
     <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-gray-900">
-        <img class="h-10 w-10" src="https://www.countryflags.io/{{params.id}}/flat/64.png" alt="{{ params.id }}"/>
-        <span>{{ data.countryRegion }}</span>
+        <img class="h-10 w-10" src="https://www.countryflags.io/{{data.iso2}}/flat/64.png" alt="i"/>
+        <span>{{ data.countryRegion }} {{data.provinceState}}</span>
       </h3>
       <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-        {{ params.id }}
+        {{ data.iso2 }}
       </p>
     </div>
     <div>

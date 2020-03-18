@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../../api.service';
-import {Case, Country} from '../../../api.model';
+import {Case} from '../../../api.model';
 import sweetAlert from 'sweetalert2';
 
 @Component({
@@ -35,12 +35,15 @@ export class CountryComponent implements OnInit, OnDestroy {
     this.apiService.getConfirmed()
       .subscribe(
         data => {
-          const country = data.find(d => d.iso2 === this.params.id);
-          if (typeof country !== 'undefined') {
+          const country = data.find(d => {
+            return encodeURI(`${d.countryRegion}--${d.long}--${d.lat}`).toLowerCase() === this.params.id;
+          });
+          if (country) {
             this.data = country;
             this.loading = false;
           } else {
             this.error = true;
+            this.loading = false;
           }
         },
         e => {
