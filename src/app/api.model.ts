@@ -79,3 +79,8 @@ export interface ArticleSource {
   name: string;
   link: string;
 }
+
+export interface Image {
+  name: string;
+  link: string;
+}
