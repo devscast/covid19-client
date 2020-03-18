@@ -6,7 +6,7 @@
       <div class="">
         <img class="h-10 w-10" src="https://www.countryflags.io/{{params.id}}/flat/64.png" alt="{{ params.id }}"/>
         <span class="text-lg leading-6 font-medium text-gray-900 mt-5">
-          Désolé les données pour : {{name}}
+          Désolé les données pour : {{data.countryRegion}} {{data.provinceState}}
         </span> <br>
         <span class="text-md text-gray-600">
           Sont temporairement indisponibles, consultez la carte ou réessayez plus tard.
@@ -19,7 +19,7 @@
     <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-gray-900">
         <img class="h-10 w-10" src="https://www.countryflags.io/{{params.id}}/flat/64.png" alt="{{ params.id }}"/>
-        <span>{{ name }}</span>
+        <span>{{ data.countryRegion }}</span>
       </h3>
       <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
         {{ params.id }}
@@ -32,7 +32,7 @@
             Confirmés
           </dt>
           <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-            {{ data.confirmed.value }}
+            {{ data.confirmed }}
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -40,7 +40,7 @@
             Guérisons
           </dt>
           <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-            {{ data.recovered.value }}
+            {{ data.recovered }}
           </dd>
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -48,12 +48,12 @@
             Morts
           </dt>
           <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-            {{ data.deaths.value }}
+            {{ data.deaths }}
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <span class="text-grey-700 text-lg font-bold">Mise à jour : {{ updatedAt }}</span> <br>
-          <span class="text-gray-500 text-md">Actualisation toutes les 5 mins.</span>
+          <span class="text-gray-500 text-md">Actualisation toutes les 3 heures.</span>
         </div>
       </dl>
     </div>

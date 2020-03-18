@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../../api.service';
-import {Country} from '../../../api.model';
+import {Case, Country} from '../../../api.model';
 import sweetAlert from 'sweetalert2';
 
 @Component({
@@ -14,26 +14,16 @@ export class CountryComponent implements OnInit, OnDestroy {
   loading: boolean;
   error = false;
   name: string;
-  data: Country;
+  data: Case;
   timer: any;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {
     this.route.params.subscribe(p => {
       this.params = p;
-      this.name = (typeof history.state.data !== 'undefined')
-        ? history.state.data.name
-        : this.getCountryName(p.id);
+      if (typeof history.state.data.country !== 'undefined') {
+        this.data = history.state.data.country;
+      }
     });
-  }
-
-  getCountryName(id: string) {
-    if (localStorage.getItem('countries')) {
-      const country = JSON
-        .parse(localStorage.getItem('countries'))
-        .find(c => c.id === id);
-      return (typeof country !== 'undefined') ? country.name : '';
-    }
-    return '';
   }
 
   get updatedAt() {
@@ -42,11 +32,16 @@ export class CountryComponent implements OnInit, OnDestroy {
 
   load() {
     this.loading = true;
-    this.apiService.getCountry(this.params.id)
+    this.apiService.getConfirmed()
       .subscribe(
         data => {
-          this.data = data;
-          this.loading = false;
+          const country = data.find(d => d.iso2 === this.params.id);
+          if (typeof country !== 'undefined') {
+            this.data = country;
+            this.loading = false;
+          } else {
+            this.error = true;
+          }
         },
         e => {
           sweetAlert.fire(

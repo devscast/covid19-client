@@ -26,23 +26,43 @@
               class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
               Pays
             </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Confirmés
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              guérisons
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Morts
+            </th>
           </tr>
           </thead>
           <tbody class="bg-white">
-          <tr *ngFor="let country of data | filter : searchText">
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-              <a routerLink="/countries/{{country.id}}" [state]="{data: country}">
+          <tr *ngFor="let country of data | filter : searchText" routerLink="/countries/{{ country.iso2 }}" [state]="{data: {country: country}}">
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200" >
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10" src="https://www.countryflags.io/{{ country.id }}/flat/64.png"
-                         alt="{{ country.id }}"/>
+                    <img class="h-10 w-10" src="https://www.countryflags.io/{{ country.iso2 }}/flat/64.png"
+                         alt="{{ country.iso2 }}"/>
                   </div>
                   <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900">{{ country.name }}</div>
-                    <div class="text-sm leading-5 text-gray-500">{{ country.id }}</div>
+                    <div
+                      class="text-sm leading-5 font-medium text-gray-900">{{ country.countryRegion }} {{ country.provinceState }}</div>
+                    <div class="text-sm leading-5 text-gray-500">{{ country.iso2 }}</div>
                   </div>
                 </div>
-              </a>
+            </td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+              {{ country.confirmed }}
+            </td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+              {{ country.recovered }}
+            </td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+              {{ country.deaths }}
             </td>
           </tr>
           </tbody>
