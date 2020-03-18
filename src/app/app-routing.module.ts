@@ -6,12 +6,14 @@ import {CountryComponent} from './pages/countries/country/country.component';
 import {ImageComponent} from './pages/image/image.component';
 import {MapComponent} from './pages/map/map.component';
 import {SourcesComponent} from './pages/sources/sources.component';
+import {InfosComponent} from './pages/infos/infos.component';
 
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, pathMatch: 'full'},
   {path: 'countries', component: CountriesComponent, pathMatch: 'full'},
   {path: 'countries/:id', component: CountryComponent, pathMatch: 'full'},
+  {path: 'notifications', component: InfosComponent, pathMatch: 'full'},
   {path: 'sources', component: SourcesComponent, pathMatch: 'full'},
   {path: 'image', component: ImageComponent, pathMatch: 'full'},
   {path: 'map', component: MapComponent, pathMatch: 'full'},

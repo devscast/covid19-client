@@ -1,0 +1,68 @@
+<div class="max-w-6xl mx-auto px-4 sm:px-6 mt-10">
+  <app-loader *ngIf="loading"></app-loader>
+  <app-error *ngIf="error"></app-error>
+
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <span>Recevoir les mises à jour par SMS <img class="h-5 w-5" src="https://www.countryflags.io/CD/flat/64.png" alt="i"/>
+        </span>
+      </h3>
+      <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+        renseignez votre numéro de téléphone et la langue nationale
+        dans laquelle vous voulez recevoir les mises à jour
+        par SMS gratuitement et sans connexion internet.
+      </p>
+    </div>
+    <div>
+      <dl>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Numéro (avec indicatif +243)
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <label for="inline-full-name"></label>
+            <input
+              [(ngModel)]="number"
+              name="number"
+              class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
+              id="inline-full-name"
+              placeholder="+243....."
+              type="text">
+          </dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Langue
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <div class="relative">
+              <label for="grid-state"></label>
+              <select
+                [(ngModel)]="lang"
+                name="lang"
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                <option selected value="Français">Français</option>
+                <option value="Lingala">Lingala</option>
+                <option value="Swahili">Swahili</option>
+                <option value="Kikongo">Kikongo</option>
+                <option value="Tshiluba">Tshiluba</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              </div>
+            </div>
+          </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500"></dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <button (click)="onSubmit()" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+              Envoyer
+            </button>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>

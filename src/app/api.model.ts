@@ -85,3 +85,8 @@ export interface Image {
   name: string;
   link: string;
 }
+
+export interface Contact {
+  number: string;
+  lang: string;
+}

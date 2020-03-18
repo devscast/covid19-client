@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Dashboard, Countries, Country, Case, Article, ArticleSource, Image} from './api.model';
+import {Dashboard, Countries, Country, Case, Article, ArticleSource, Image, Contact} from './api.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +26,10 @@ export class ApiService {
 
   getImages(): Observable<Image[]> {
     return this.http.get<Image[]>(this.NEWS_BASE_URL + 'images');
+  }
+
+  addContact(data: Contact): Observable<Contact> {
+    return this.http.post<Contact>(this.NEWS_BASE_URL + 'contacts', data);
   }
 
   getSources(): Observable<ArticleSource[]> {

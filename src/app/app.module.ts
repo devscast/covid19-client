@@ -17,6 +17,8 @@ import {MapComponent} from './pages/map/map.component';
 import {ErrorComponent} from './components/error/error.component';
 import {ApiInterceptor} from './api.interceptor';
 import { SourcesComponent } from './pages/sources/sources.component';
+import { InfosComponent } from './pages/infos/infos.component';
+import { AlertsComponent } from './pages/alerts/alerts.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { SourcesComponent } from './pages/sources/sources.component';
     MapComponent,
     ErrorComponent,
     SourcesComponent,
+    InfosComponent,
+    AlertsComponent,
   ],
   imports: [
     BrowserModule,
