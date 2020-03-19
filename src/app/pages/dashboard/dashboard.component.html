@@ -3,51 +3,95 @@
   <app-error *ngIf="error"></app-error>
 
   <div class="overflow-hidden pb-5" *ngIf="data">
-    <div class="px-2 mb-5">
-      <span class="text-grey-700 text-lg font-bold">Mise à jour : {{ updatedAt }}</span> <br>
-      <span class="text-gray-500 text-md">Actualisation toutes les 3 heures.</span>
+    <div class="mb-10" *ngIf="drc">
+      <div class="px-2 mb-5">
+        <div class="text-grey-700 text-lg font-bold">Situation en RDC
+          <img style="display: inline-block" class="h-10 w-10" src="https://www.countryflags.io/CD/flat/64.png" alt="cd"/>
+        </div>
+        <span class="text-gray-600 text-md">Mise à jour : {{ updatedAt }}</span> <br>
+        <span class="text-gray-600 text-md">Actualisation toutes les 3 heures.</span>
+      </div>
+      <div class="grid grid-cols-6 gap-4">
+        <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
+          <div class="min-w-full bg-white rounded overflow-hidden shadow">
+            <div class="px-6 py-4">
+              <div class="text-gray-700 mb-2">Confirmés</div>
+              <p class="font-bold text-xl text-base">
+                {{ drc.confirmed }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
+          <div class="min-w-full bg-white rounded overflow-hidden shadow">
+            <div class="px-6 py-4">
+              <div class="text-gray-700 mb-2">Guérisons</div>
+              <p class="font-bold text-xl text-base">
+                {{ drc.recovered }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
+          <div class="min-w-full bg-white rounded overflow-hidden shadow">
+            <div class="px-6 py-4">
+              <div class="text-gray-700 mb-2">Morts</div>
+              <p class="font-bold text-xl text-base">
+                {{ drc.deaths }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="grid grid-cols-6 gap-4">
-      <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
-        <div class="min-w-full rounded overflow-hidden shadow">
-          <div class="px-6 py-4">
-            <div class="text-gray-700 mb-2">Confirmés</div>
-            <p class="font-bold text-xl text-base">
-              {{ data.confirmed.value }}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
-        <div class="min-w-full rounded overflow-hidden shadow">
-          <div class="px-6 py-4">
-            <div class="text-gray-700 mb-2">Guérisons</div>
-            <p class="font-bold text-xl text-base">
-              {{ data.recovered.value }}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
-        <div class="min-w-full rounded overflow-hidden shadow">
-          <div class="px-6 py-4">
-            <div class="text-gray-700 mb-2">Morts</div>
-            <p class="font-bold text-xl text-base">
-              {{ data.deaths.value }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+   <div>
+     <div class="px-2 mb-5">
+       <div class="text-lg font-bold">Situation Globale</div>
+       <span class="text-gray-600 text-md">Mise à jour : {{ updatedAt }}</span> <br>
+       <span class="text-gray-600 text-md">Actualisation toutes les 3 heures.</span>
+     </div>
+     <div class="grid grid-cols-6 gap-4">
+       <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
+         <div class="min-w-full bg-white rounded overflow-hidden shadow">
+           <div class="px-6 py-4">
+             <div class="text-gray-700 mb-2">Confirmés</div>
+             <p class="font-bold text-xl text-base">
+               {{ data.confirmed.value }}
+             </p>
+           </div>
+         </div>
+       </div>
+       <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
+         <div class="min-w-full bg-white rounded overflow-hidden shadow">
+           <div class="px-6 py-4">
+             <div class="text-gray-700 mb-2">Guérisons</div>
+             <p class="font-bold text-xl text-base">
+               {{ data.recovered.value }}
+             </p>
+           </div>
+         </div>
+       </div>
+       <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
+         <div class="min-w-full bg-white rounded overflow-hidden shadow">
+           <div class="px-6 py-4">
+             <div class="text-gray-700 mb-2">Morts</div>
+             <p class="font-bold text-xl text-base">
+               {{ data.deaths.value }}
+             </p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
 
     <div *ngIf="articles">
       <div class="px-2 mb-5 mt-10">
-        <span class="text-grey-700 text-lg font-bold">Vulgarisation</span> <br>
-        <span class="text-gray-500 text-md">Voici quelques ressources pour en savoir plus</span>
+        <span class="text-lg font-bold">Vulgarisation</span> <br>
+        <span class="text-gray-600 text-md">Voici quelques ressources pour en savoir plus</span>
       </div>
       <div class="mt-10">
         <div class="grid grid-cols-6 gap-4">
-          <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2 rounded overflow-hidden shadow-lg" *ngFor="let article of articles">
+          <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2 rounded bg-white overflow-hidden shadow-lg" *ngFor="let article of articles">
             <a *ngIf="article.type === 'post'" href="{{ article.link }}" target="_blank">
               <img class="w-full" alt="image" src="{{ article.image }}">
               <div class="px-6 py-4">

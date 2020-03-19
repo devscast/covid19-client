@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Article, Dashboard} from 'src/app/api.model';
+import {Article, Dashboard, Case} from 'src/app/api.model';
 import {ApiService} from 'src/app/api.service';
 import sweetAlert from 'sweetalert2';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   loading: boolean;
   data: Dashboard;
   error = false;
+  drc: Case;
   articles: Article[];
   timer: any;
 
@@ -33,6 +34,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
           }
         });
       });
+  }
+
+  loadDRC() {
+    const id = 'congo (kinshasa)';
+    this.loading = true;
+    this.apiService.getConfirmed()
+      .subscribe(
+        data => {
+          const country = data.find(d => {
+            return `${d.countryRegion}`.toLowerCase() === id;
+          });
+          if (country) this.drc = country;
+        }
+      );
   }
 
   load() {
@@ -56,6 +71,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.loadDRC();
     this.load();
     this.loadArticles();
     this.timer = setInterval(this.load, 300000);

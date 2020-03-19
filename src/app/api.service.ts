@@ -19,6 +19,10 @@ export class ApiService {
     return this.http.get<Dashboard>(this.BASE_URL);
   }
 
+  getDRCData(): Observable<Case> {
+    return this.http.get<Case>(this.BASE_URL);
+  }
+
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.NEWS_BASE_URL + 'articles');
   }
