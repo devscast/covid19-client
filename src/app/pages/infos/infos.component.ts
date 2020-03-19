@@ -39,8 +39,9 @@ export class InfosComponent implements OnInit {
               'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
               'warning'
             );
+            this.loading = false;
           }
-        }
+        },
       );
   }
 }

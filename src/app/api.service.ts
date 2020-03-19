@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Dashboard, Countries, Country, Case, Article, ArticleSource, Image, Contact} from './api.model';
+import {Alert, Dashboard, Countries, Country, Case, Article, ArticleSource, Image, Contact} from './api.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,6 @@ export class ApiService {
 
   readonly BASE_URL = 'https://covid19.mathdro.id/api/';
   readonly NEWS_BASE_URL = 'https://covid19news.devs-cast.com/api/';
-  readonly SUMMARY_IMAGE = 'https://covid19.mathdro.id/api/og';
 
   constructor(private http: HttpClient) {
   }
@@ -30,6 +29,10 @@ export class ApiService {
 
   addContact(data: Contact): Observable<Contact> {
     return this.http.post<Contact>(this.NEWS_BASE_URL + 'contacts', data);
+  }
+
+  addAlert(data: Alert): Observable<Alert> {
+    return this.http.post<Alert>(this.NEWS_BASE_URL + 'alerts', data);
   }
 
   getSources(): Observable<ArticleSource[]> {

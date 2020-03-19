@@ -1,1 +1,66 @@
-<p>alerts works!</p>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 mt-10">
+  <app-loader *ngIf="loading"></app-loader>
+  <app-error *ngIf="error"></app-error>
+
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <span>
+          Signaler un cas suspect
+          <img class="h-5 w-5" src="https://www.countryflags.io/CD/flat/64.png" alt="i"/>
+        </span>
+      </h3>
+      <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+        Les personnes infectées par le COVID-19 peuvent n'avoir
+        que peu ou pas de symptômes. Vous ne savez peut-être pas
+        que vous avez des symptômes du COVID-19 car ils peuvent
+        s’apparenter à ceux d’un rhume ou d’une grippe.
+      </p>
+    </div>
+    <form (ngSubmit)="onSubmit()" ngNativeValidate>
+      <dl>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Votre Numéro (avec indicatif +243)
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <label for="inline-full-name"></label>
+            <input [(ngModel)]="number" name="number" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500" id="inline-full-name" placeholder="+243....." type="text">
+          </dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Symptômes
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <div class="relative">
+              <label for="grid-state"></label>
+              <select [(ngModel)]="symptoms" multiple required name="symptoms" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                <option selected value="fièvre">Fièvre</option>
+                <option value="toux">Toux</option>
+                <option value="difficultés respiratoires">Difficultés respiratoires</option>
+              </select>
+            </div>
+          </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Informations Supplémentaires
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <label for="infos"></label>
+            <textarea [(ngModel)]="infos" name="infos" id="infos" rows="5" placeholder="rajouter des informations qui pourront nous aider..." class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"></textarea>
+          </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500"></dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <button type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+              Envoyer
+            </button>
+          </dd>
+        </div>
+      </dl>
+    </form>
+  </div>
+</div>

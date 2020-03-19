@@ -90,3 +90,11 @@ export interface Contact {
   number: string;
   lang: string;
 }
+
+export interface Alert {
+  number: string;
+  lat: string;
+  lng: string;
+  symptoms: string;
+  infos?: string;
+}
