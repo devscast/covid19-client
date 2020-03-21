@@ -1,7 +1,18 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Alert, Dashboard, Countries, Country, Case, Article, ArticleSource, Image, Contact} from './api.model';
+import {
+  Alert,
+  Dashboard,
+  Countries,
+  Country,
+  Case,
+  Article,
+  ArticleSource,
+  Image,
+  Contact,
+  CongoCase
+} from './api.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +30,8 @@ export class ApiService {
     return this.http.get<Dashboard>(this.BASE_URL);
   }
 
-  getDRCData(): Observable<Case> {
-    return this.http.get<Case>(this.BASE_URL);
+  getCongoCase(): Observable<CongoCase> {
+    return this.http.get<CongoCase>(this.NEWS_BASE_URL + 'cases/1');
   }
 
   getArticles(): Observable<Article[]> {
