@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
@@ -13,11 +14,12 @@ import {ComponentsModule} from './components/components.module';
     AppComponent,
   ],
   imports: [
+    FormsModule,
+    CommonModule,
     BrowserModule,
-    AppRoutingModule,
     ComponentsModule,
-    HttpClientModule,
-    FormsModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     {
