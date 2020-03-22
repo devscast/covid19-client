@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Case} from 'src/app/api.model';
 import {ApiService} from 'src/app/api.service';
 import sweetAlert from 'sweetalert2';
-import {URL} from 'url';
 
 @Component({
   selector: 'app-countries',

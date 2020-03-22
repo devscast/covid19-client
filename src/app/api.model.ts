@@ -53,7 +53,7 @@ export interface DailyReport {
   totalConfirmed?: number;
   totalRecovered?: number;
   deltaConfirmed: number;
-  deltaRecoverred?: number;
+  deltaRecovered?: number;
   objectid: number;
 }
 

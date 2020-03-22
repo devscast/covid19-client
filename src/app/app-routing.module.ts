@@ -1,21 +1,31 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {DashboardComponent} from './pages/dashboard/dashboard.component';
-import {CountriesComponent} from './pages/countries/countries.component';
-import {CountryComponent} from './pages/countries/country/country.component';
-import {MapComponent} from './pages/map/map.component';
-import {InfosComponent} from './pages/infos/infos.component';
-import {AlertsComponent} from './pages/alerts/alerts.component';
-
 
 const routes: Routes = [
-  {path: 'dashboard', component: DashboardComponent, pathMatch: 'full'},
-  {path: 'countries', component: CountriesComponent, pathMatch: 'full'},
-  {path: 'countries/:id', component: CountryComponent, pathMatch: 'full'},
-  {path: 'signaler', component: AlertsComponent, pathMatch: 'full'},
-  {path: 'notifications', component: InfosComponent, pathMatch: 'full'},
-  {path: 'map', component: MapComponent, pathMatch: 'full'},
-  {path: '**', redirectTo: 'dashboard'}
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+  },
+  {
+    path: 'countries',
+    loadChildren: () => import('./pages/countries/countries.module').then(m => m.CountriesModule),
+  },
+  {
+    path: 'signaler',
+    loadChildren: () => import('./pages/alerts/alerts.module').then(m => m.AlertsModule),
+  },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./pages/infos/infos.module').then(m => m.InfosModule),
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./pages/map/map.module').then(m => m.MapModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard'
+  }
 ];
 
 @NgModule({
