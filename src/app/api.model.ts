@@ -103,4 +103,5 @@ export interface Alert {
   lng: string;
   symptoms: string;
   infos?: string;
+  status?: string;
 }
