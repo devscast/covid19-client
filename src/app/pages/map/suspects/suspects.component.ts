@@ -46,7 +46,6 @@ export class SuspectsComponent implements OnInit, OnDestroy {
                   radius: 300
                 })
                   .bindPopup(`
-                    <h3>${alert.number}</h3><br>
                     <b>Statut: ${alert.status}</b><br>
                     <b>Symptômes</b>: ${alert.symptoms}<br><br>
                     <b>Infos</b>: ${alert.infos}<br>
