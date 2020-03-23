@@ -32,7 +32,9 @@
               "src/styles.scss",
               "src/tailwind.scss"
             ],
-            "scripts": [],
+            "scripts": [
+            	"https//code.tidio.co/vhnsyzchshdmf1obdxmcyzbq9s25xsq1.js"
+            ],
             "customWebpackConfig": {
               "path": "extra-webpack.config.js"
             }
