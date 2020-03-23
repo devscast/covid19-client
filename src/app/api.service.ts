@@ -1,18 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {
-  Alert,
-  Dashboard,
-  Countries,
-  Country,
-  Case,
-  Article,
-  ArticleSource,
-  Image,
-  Contact,
-  CongoCase
-} from './api.model';
+import * as Model from './api.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,43 +15,43 @@ export class ApiService {
   }
 
 
-  getDashboard(): Observable<Dashboard> {
-    return this.http.get<Dashboard>(this.BASE_URL);
+  getDashboard(): Observable<Model.Dashboard> {
+    return this.http.get<Model.Dashboard>(this.BASE_URL);
   }
 
-  getCongoCase(): Observable<CongoCase> {
-    return this.http.get<CongoCase>(this.NEWS_BASE_URL + 'cases/1');
+  getCongoCase(): Observable<Model.CongoCase> {
+    return this.http.get<Model.CongoCase>(this.NEWS_BASE_URL + 'cases/1');
   }
 
-  getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.NEWS_BASE_URL + 'articles');
+  getArticles(): Observable<Model.Article[]> {
+    return this.http.get<Model.Article[]>(this.NEWS_BASE_URL + 'articles');
   }
 
-  getImages(): Observable<Image[]> {
-    return this.http.get<Image[]>(this.NEWS_BASE_URL + 'images');
+  getImages(): Observable<Model.Image[]> {
+    return this.http.get<Model.Image[]>(this.NEWS_BASE_URL + 'images');
   }
 
-  addContact(data: Contact): Observable<Contact> {
-    return this.http.post<Contact>(this.NEWS_BASE_URL + 'contacts', data);
+  addContact(data: Model.Contact): Observable<Model.Contact> {
+    return this.http.post<Model.Contact>(this.NEWS_BASE_URL + 'contacts', data);
   }
 
-  addAlert(data: Alert): Observable<Alert> {
-    return this.http.post<Alert>(this.NEWS_BASE_URL + 'alerts', data);
+  addAlert(data: Model.Alert): Observable<Model.Alert> {
+    return this.http.post<Model.Alert>(this.NEWS_BASE_URL + 'alerts', data);
   }
 
-  getSources(): Observable<ArticleSource[]> {
-    return this.http.get<ArticleSource[]>(this.NEWS_BASE_URL + 'sources');
+  getAlerts(): Observable<Model.Alert[]> {
+    return this.http.get<Model.Alert[]>(this.NEWS_BASE_URL + 'alerts');
   }
 
-  getCountries(): Observable<Countries> {
-    return this.http.get<Countries>(this.BASE_URL + 'countries');
+  getCountries(): Observable<Model.Countries> {
+    return this.http.get<Model.Countries>(this.BASE_URL + 'countries');
   }
 
-  getCountry(name: string): Observable<Country> {
-    return this.http.get<Country>(this.BASE_URL + `countries/${name}`);
+  getCountry(name: string): Observable<Model.Country> {
+    return this.http.get<Model.Country>(this.BASE_URL + `countries/${name}`);
   }
 
-  getConfirmed(): Observable<Case[]> {
-    return this.http.get<Case[]>(this.BASE_URL + 'confirmed');
+  getConfirmed(): Observable<Model.Case[]> {
+    return this.http.get<Model.Case[]>(this.BASE_URL + 'confirmed');
   }
 }

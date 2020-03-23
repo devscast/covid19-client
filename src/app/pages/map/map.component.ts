@@ -60,8 +60,12 @@ export class MapComponent implements OnInit, OnDestroy {
             e => {
               sweetAlert.fire('Error', 'Impossible de vous géolocaliser, Réessayez plus tard', 'warning');
               this.error = true;
+            },
+            {
+              enableHighAccuracy: true
             }
-          );
+          )
+          ;
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           }).addTo(map);
