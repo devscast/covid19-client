@@ -12,7 +12,7 @@ export class CountriesComponent implements OnInit {
   loading: boolean;
   error = false;
   searchText: string;
-  sortBy: string = '';
+  sortBy = '';
   data: Case[];
   filteredData: Case[];
 
