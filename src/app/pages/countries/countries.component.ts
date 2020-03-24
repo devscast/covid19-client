@@ -12,7 +12,9 @@ export class CountriesComponent implements OnInit {
   loading: boolean;
   error = false;
   searchText: string;
+  sortBy: string = '';
   data: Case[];
+  filteredData: Case[];
 
   constructor(private apiService: ApiService) {
   }
@@ -26,6 +28,7 @@ export class CountriesComponent implements OnInit {
             d.url = encodeURI(`${d.countryRegion}--${d.long}--${d.lat}`).toLowerCase();
           });
           this.data = data;
+          this.filteredData = data;
           this.loading = false;
         }, e => {
           sweetAlert.fire(
