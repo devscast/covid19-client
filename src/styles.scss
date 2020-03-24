@@ -21,6 +21,19 @@
   border-radius: 5px;
 }
 
+.ngx-pagination a, .ngx-pagination button {
+  color: #4a5568 !important;
+}
+
+.ngx-pagination .current {
+  background: #14DA94 !important;
+  border-radius: 0.25rem !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.ngx-pagination {
+  margin-bottom: 0 !important;
+}
 
 .primary-active {
   background-color: #14DA94;
