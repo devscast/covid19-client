@@ -1,5 +1,5 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {Case} from 'src/app/api.model';
+import { Pipe, PipeTransform } from '@angular/core';
+import { Case } from 'src/app/api.model';
 
 const sortByCallback = (sortBy: string): any => (a: Case, b: Case) => {
   if (!a.hasOwnProperty(sortBy)) {

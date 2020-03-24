@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Case} from 'src/app/api.model';
-import {ApiService} from 'src/app/api.service';
+import { Component, OnInit } from '@angular/core';
+import { Case } from 'src/app/api.model';
+import { ApiService } from 'src/app/api.service';
 import sweetAlert from 'sweetalert2';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-countries',
@@ -14,9 +15,10 @@ export class CountriesComponent implements OnInit {
   searchText: string;
   sortBy = '';
   data: Case[];
+  currentPage: number = null;
   filteredData: Case[];
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -40,5 +42,25 @@ export class CountriesComponent implements OnInit {
           this.error = true;
         }
       );
+    this.getPageQueryParam();
+  }
+
+  getPageQueryParam() {
+    const page = this.activatedRoute.snapshot.queryParams.page;
+    page ? this.currentPage = page : this.currentPage = 1;
+  }
+
+  pageChanged(pageId) {
+    this.currentPage = pageId;
+    this.changePageQueryParam();
+  }
+
+  changePageQueryParam() {
+    this.router.navigate([], {
+      queryParams: {
+        page: this.currentPage
+      },
+      queryParamsHandling: 'merge',
+    });
   }
 }

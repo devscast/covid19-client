@@ -7,29 +7,25 @@
       <div class="mr-4">
         <label for="sort-by"></label>
         <div class="relative">
-          <select
-          [(ngModel)]="sortBy"
-          class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded pr-8 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500"
-          id="sort-by"
-        >
-          <option value="">Trier par</option>
-          <option value="confirmed">Confirmé</option>
-          <option value="recovered">Guérison</option>
-          <option value="deaths">Mort</option>
-        </select>
+          <select [(ngModel)]="sortBy"
+            class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded pr-8 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500"
+            id="sort-by">
+            <option value="">Trier par</option>
+            <option value="confirmed">Confirmé</option>
+            <option value="recovered">Guérison</option>
+            <option value="deaths">Mort</option>
+          </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center my-4 px-2 text-gray-700">
-            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
           </div>
         </div>
       </div>
       <div class="flex-1">
         <label for="inline-full-name"></label>
-        <input
-          [(ngModel)]="searchText"
+        <input [(ngModel)]="searchText"
           class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-          id="inline-full-name"
-          placeholder="rechercher un pays..."
-          type="text">
+          id="inline-full-name" placeholder="rechercher un pays..." type="text">
       </div>
     </div>
   </div>
@@ -39,49 +35,58 @@
       <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
         <table class="min-w-full">
           <thead>
-          <tr>
-            <th class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-              Pays
-            </th>
-            <th class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-              Confirmés
-            </th>
-            <th class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-              guérisons
-            </th>
-            <th class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-              Morts
-            </th>
-          </tr>
+            <tr>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                Pays
+              </th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                Confirmés
+              </th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                guérisons
+              </th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                Morts
+              </th>
+            </tr>
           </thead>
           <tbody class="bg-white">
-          <tr *ngFor="let country of data | filter : searchText : sortBy" routerLink="/countries/{{ country.url }}" [state]="{data: {country: country}}">
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200" >
+            <tr
+              *ngFor="let country of data | filter : searchText : sortBy | paginate: { itemsPerPage: 10, currentPage: currentPage }"
+              routerLink="/countries/{{ country.url }}" [state]="{data: {country: country}}">
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
                     <img class="h-10 w-10" src="https://www.countryflags.io/{{ country.iso2 }}/flat/64.png"
-                         alt="{{ country.iso2 }}"/>
+                      alt="{{ country.iso2 }}" />
                   </div>
                   <div class="ml-4">
-                    <div
-                      class="text-sm leading-5 font-medium text-gray-900">{{ country.countryRegion }} {{ country.provinceState }}</div>
+                    <div class="text-sm leading-5 font-medium text-gray-900">{{ country.countryRegion }}
+                      {{ country.provinceState }}</div>
                     <div class="text-sm leading-5 text-gray-500">{{ country.iso2 }}</div>
                   </div>
                 </div>
-            </td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-              {{ country.confirmed }}
-            </td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-              {{ country.recovered }}
-            </td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-              {{ country.deaths }}
-            </td>
-          </tr>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                {{ country.confirmed }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                {{ country.recovered }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                {{ country.deaths }}
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
+    </div>
+    <div class="flex justify-center align-center min-w-full shadow  border-b border-gray-200 my-4" *ngIf="data">
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
   </div>
 </div>
