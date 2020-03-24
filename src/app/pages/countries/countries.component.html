@@ -7,18 +7,17 @@
       <div class="mr-4">
         <label for="sort-by"></label>
         <div class="relative">
-          <select
-          [(ngModel)]="sortBy"
-          class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded pr-8 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500"
-          id="sort-by"
-        >
-          <option value="">Trier par</option>
-          <option value="confirmed">Confirmé</option>
-          <option value="recovered">Guérison</option>
-          <option value="deaths">Mort</option>
-        </select>
+          <select [(ngModel)]="sortBy"
+            class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded pr-8 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500"
+            id="sort-by">
+            <option value="">Trier par</option>
+            <option value="confirmed">Confirmé</option>
+            <option value="recovered">Guérison</option>
+            <option value="deaths">Mort</option>
+          </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center my-4 px-2 text-gray-700">
-            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
           </div>
         </div>
       </div>
@@ -57,7 +56,7 @@
           </thead>
           <tbody class="bg-white">
             <tr
-              *ngFor="let country of data | filter : searchText | paginate: { itemsPerPage: 10, currentPage: currentPage }"
+              *ngFor="let country of data | filter : searchText : sortBy | paginate: { itemsPerPage: 10, currentPage: currentPage }"
               routerLink="/countries/{{ country.url }}" [state]="{data: {country: country}}">
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
