@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Case} from 'src/app/api.model';
-import {ApiService} from 'src/app/api.service';
+import { Component, OnInit } from '@angular/core';
+import { Case } from 'src/app/api.model';
+import { ApiService } from 'src/app/api.service';
 import sweetAlert from 'sweetalert2';
 
 @Component({
@@ -13,6 +13,7 @@ export class CountriesComponent implements OnInit {
   error = false;
   searchText: string;
   data: Case[];
+  currentPage: number = 1;
 
   constructor(private apiService: ApiService) {
   }
@@ -37,5 +38,9 @@ export class CountriesComponent implements OnInit {
           this.error = true;
         }
       );
+  }
+
+  pageChanged(pageId) {
+    this.currentPage = pageId;
   }
 }

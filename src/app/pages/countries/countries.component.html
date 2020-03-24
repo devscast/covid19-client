@@ -6,12 +6,9 @@
     <div class="md:flex mb-6">
       <div class="flex-1">
         <label for="inline-full-name"></label>
-        <input
-          [(ngModel)]="searchText"
+        <input [(ngModel)]="searchText"
           class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-          id="inline-full-name"
-          placeholder="rechercher un pays..."
-          type="text">
+          id="inline-full-name" placeholder="rechercher un pays..." type="text">
       </div>
     </div>
   </div>
@@ -21,49 +18,58 @@
       <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
         <table class="min-w-full">
           <thead>
-          <tr>
-            <th class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-              Pays
-            </th>
-            <th class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-              Confirmés
-            </th>
-            <th class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-              guérisons
-            </th>
-            <th class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-              Morts
-            </th>
-          </tr>
+            <tr>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                Pays
+              </th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                Confirmés
+              </th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                guérisons
+              </th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                Morts
+              </th>
+            </tr>
           </thead>
           <tbody class="bg-white">
-          <tr *ngFor="let country of data | filter : searchText" routerLink="/countries/{{ country.url }}" [state]="{data: {country: country}}">
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200" >
+            <tr
+              *ngFor="let country of data | filter : searchText | paginate: { itemsPerPage: 10, currentPage: currentPage }"
+              routerLink="/countries/{{ country.url }}" [state]="{data: {country: country}}">
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
                     <img class="h-10 w-10" src="https://www.countryflags.io/{{ country.iso2 }}/flat/64.png"
-                         alt="{{ country.iso2 }}"/>
+                      alt="{{ country.iso2 }}" />
                   </div>
                   <div class="ml-4">
-                    <div
-                      class="text-sm leading-5 font-medium text-gray-900">{{ country.countryRegion }} {{ country.provinceState }}</div>
+                    <div class="text-sm leading-5 font-medium text-gray-900">{{ country.countryRegion }}
+                      {{ country.provinceState }}</div>
                     <div class="text-sm leading-5 text-gray-500">{{ country.iso2 }}</div>
                   </div>
                 </div>
-            </td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-              {{ country.confirmed }}
-            </td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-              {{ country.recovered }}
-            </td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-              {{ country.deaths }}
-            </td>
-          </tr>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                {{ country.confirmed }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                {{ country.recovered }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                {{ country.deaths }}
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
+    </div>
+    <div class="flex justify-center align-center min-w-full shadow  border-b border-gray-200 my-4" *ngIf="data">
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
   </div>
 </div>
