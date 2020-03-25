@@ -3,6 +3,8 @@ import { Case } from 'src/app/api.model';
 import { ApiService } from 'src/app/api.service';
 import sweetAlert from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-countries',
@@ -18,7 +20,12 @@ export class CountriesComponent implements OnInit {
   currentPage: number = null;
   filteredData: Case[];
 
-  constructor(private apiService: ApiService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public translate: TranslateService
+  ) {
   }
 
   ngOnInit(): void {

@@ -10,10 +10,10 @@
           <select [(ngModel)]="sortBy"
             class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded pr-8 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500"
             id="sort-by">
-            <option value="">Trier par</option>
-            <option value="confirmed">Confirmé</option>
-            <option value="recovered">Guérison</option>
-            <option value="deaths">Mort</option>
+            <option value="">{{'Trier par' | translate}}</option>
+            <option value="confirmed">{{'Confirmé' | translate}}</option>
+            <option value="recovered">{{'Guérison' | translate}}</option>
+            <option value="deaths">{{'Mort' | translate}}</option>
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center my-4 px-2 text-gray-700">
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -25,7 +25,7 @@
         <label for="inline-full-name"></label>
         <input [(ngModel)]="searchText"
           class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-          id="inline-full-name" placeholder="rechercher un pays..." type="text">
+          id="inline-full-name" placeholder="{{'rechercher un pays' | translate}}..." type="text">
       </div>
     </div>
   </div>
@@ -38,19 +38,19 @@
             <tr>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                Pays
+                {{'Pays' | translate}}
               </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                Confirmés
+                {{'Confirmés' | translate}}
               </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                guérisons
+                {{'Guérisons' | translate}}
               </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                Morts
+                {{'Morts' | translate}}
               </th>
             </tr>
           </thead>

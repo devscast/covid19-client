@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {CountriesComponent} from './countries.component';
 import {CountryComponent} from './country/country.component';
 
+
 const routes: Routes = [
   {
     path: '',
