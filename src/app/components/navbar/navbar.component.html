@@ -7,7 +7,7 @@
         </div>
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline">
-            <a routerLink="/dashboard" routerLinkActive="bg-green-500" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-green-700 focus:outline-none">Dashboard</a>
+            <a routerLink="/dashboard" routerLinkActive="bg-green-500" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-green-700 focus:outline-none">Rapports</a>
             <a routerLink="/countries" routerLinkActive="bg-green-500" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-green-700 focus:outline-none">Pays Atteints</a>
             <a routerLink="/map" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="bg-green-500" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-green-700 focus:outline-none">Carte</a>
             <a routerLink="/map/suspects" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="bg-green-500" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-green-700 focus:outline-none">Zone à Risques</a>
@@ -28,7 +28,7 @@
   </div>
   <div [ngClass]="{'block': open, 'hidden': !open }" class="hidden md:hidden">
     <div class="px-2 pt-2 pb-3 sm:px-3">
-      <a routerLink="/dashboard" routerLinkActive="bg-green-500" class="ml-4 block px-3 py-2 rounded-md text-sm font-medium text-white hover:text-white hover:bg-green-700 focus:outline-none">Dashboard</a>
+      <a routerLink="/dashboard" routerLinkActive="bg-green-500" class="ml-4 block px-3 py-2 rounded-md text-sm font-medium text-white hover:text-white hover:bg-green-700 focus:outline-none">Rapports</a>
       <a routerLink="/countries" routerLinkActive="bg-green-500" class="ml-4 block px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-green-700 focus:outline-none">Pays Atteints</a>
       <a routerLink="/map" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="bg-green-500" class="ml-4 block px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-green-700 focus:outline-none">Carte</a>
       <a routerLink="/map/suspects" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="bg-green-500" class="ml-4 block px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-green-700 focus:outline-none">Zone à Risques</a>
