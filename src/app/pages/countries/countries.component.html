@@ -57,7 +57,7 @@
           <tbody class="bg-white">
             <tr
               *ngFor="let country of data | filter : searchText : sortBy | paginate: { itemsPerPage: 10, currentPage: currentPage }"
-              routerLink="/countries/{{ country.url }}" [state]="{data: {country: country}}">
+              routerLink="/countries/{{ country.iso2 || country.url }}" [state]="{data: {country: country}}">
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
