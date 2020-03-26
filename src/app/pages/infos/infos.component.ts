@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../api.service';
 import sweetAlert from 'sweetalert2';
 import {Router} from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-infos',
@@ -14,7 +15,11 @@ export class InfosComponent implements OnInit {
   loading: boolean;
   error: boolean;
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    public translate: TranslateService,
+  ) {
   }
 
   ngOnInit(): void {

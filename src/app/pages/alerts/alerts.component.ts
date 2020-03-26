@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import sweetAlert from 'sweetalert2';
 import {ApiService} from '../../api.service';
 import {Router} from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-alerts',
@@ -17,7 +18,11 @@ export class AlertsComponent implements OnInit {
   lat: number;
   lng: number;
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    public translate: TranslateService,
+  ) {
   }
 
   ngOnInit(): void {

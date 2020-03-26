@@ -2,7 +2,7 @@
   "Recherche": "Recherche",
   "rechercher un pays": "rechercher un pays",
   "Dashboard": "Tableau de Bord",
-  "Table de bord": "Tableau de Bord",
+  "Rapports": "Rapports",
   "Pays Atteints": "Pays Atteints",
   "Carte": "Carte",
   "Zone à Risques": "Zone à Risques",
@@ -29,6 +29,15 @@
   "Renseignez votre numéro de téléphone et la langue nationale dans laquelle vous voulez recevoir les mises à jour par SMS gratuitement et sans connexion internet.": "Renseignez votre numéro de téléphone et la langue nationale dans laquelle vous voulez recevoir les mises à jour par SMS gratuitement et sans connexion internet.",
   "Numéro (avec indicatif +243)": "Numéro (avec indicatif +243)",
   "Numéro (+243)": "Numéro (+243)",
+  "Votre Numéro (avec indicatif +243)": "Votre Numéro (avec indicatif +243)",
   "Langue": "Langue",
-  "Envoyer": "Envoyer"
+  "Envoyer": "Envoyer",
+  "Signaler un cas suspect": "Signaler un cas suspect",
+  "Symptômes": "Symptômes",
+  "Fièvre": "Fièvre",
+  "Toux": "Toux",
+  "Difficultés respiratoires": "Difficultés respiratoires",
+  "Congestion Nasale": "Congestion Nasale",
+  "Mal de gorge": "Mal de gorge",
+  "Informations Supplémentaires": "Informations Supplémentaires"
 }

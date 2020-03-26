@@ -2,7 +2,7 @@
   "Recherche": "Tafuta",
   "rechercher un pays": "tafuta nchi",
   "Dashboard": "Dashibodi",
-  "Table de bord": "Dashibodi",
+  "Rapports": "Ripoti",
   "Pays Atteints": "Nchi zilizofikiwa",
   "Carte": "Ramani",
   "Zone à Risques": "Sehemu ya Hatari",
@@ -30,5 +30,13 @@
   "Numéro (avec indicatif +243)": "Nambari (na nambari ya +243)",
   "Numéro (+243)": "Nambari ya simu (+243)",
   "Langue": "Lugha",
-  "Envoyer": "Tuma"
+  "Envoyer": "Tuma",
+  "Signaler un cas suspect": "Ripoti kesi inayoshukiwa",
+  "Symptômes": "Dalili",
+  "Fièvre": "Homa",
+  "Toux": "Kikohozi",
+  "Difficultés respiratoires": "Shida za kupumua",
+  "Congestion Nasale": "Msongamano wa pua",
+  "Mal de gorge": "Kidonda cha koo",
+  "Informations Supplémentaires": "Habari ya ziada"
 }

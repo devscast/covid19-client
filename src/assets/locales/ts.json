@@ -2,7 +2,7 @@
   "Recherche": "",
   "rechercher un pays": "rechercher un pays",
   "Dashboard": "",
-  "Tableau de bord": "",
+  "Rapports": "",
   "Pays Atteints": "",
   "Carte": "",
   "Zone à Risques": "",
@@ -30,5 +30,13 @@
   "Numéro (avec indicatif +243)": "",
   "Numéro (+243)": "",
   "Langue": "",
-  "Envoyer": ""
+  "Envoyer": "",
+  "Signaler un cas suspect": "",
+  "Symptômes": "",
+  "Fièvre": "",
+  "Toux": "",
+  "Difficultés respiratoires": "",
+  "Congestion Nasale": "",
+  "Mal de gorge": "",
+  "Informations Supplémentaires": ""
 }

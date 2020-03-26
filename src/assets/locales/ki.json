@@ -2,7 +2,7 @@
   "Recherche": "",
   "rechercher un pays": "",
   "Dashboard": "Nzo",
-  "Table de bord": "Tableau de Bord",
+  "Rapports": "",
   "Pays Atteints": "Buala",
   "Carte": "",
   "Zone à Risques": "",
@@ -29,7 +29,15 @@
   "Renseignez votre numéro de téléphone et la langue nationale dans laquelle vous voulez recevoir les mises à jour par SMS gratuitement et sans connexion internet.": "",
   "Numéro (avec indicatif +243)": "",
   "Numéro (+243)": "",
+  "Votre Numéro (avec indicatif +243)": "Votre Numéro (avec indicatif +243)",
   "Langue": "Ndinga",
-  "Envoyer": ""
-
+  "Envoyer": "",
+  "Signaler un cas suspect": "Signaler un cas suspect",
+  "Symptômes": "Symptômes",
+  "Fièvre": "Fièvre",
+  "Toux": "Toux",
+  "Difficultés respiratoires": "Difficultés respiratoires",
+  "Congestion Nasale": "Congestion Nasale",
+  "Mal de gorge": "Mal de gorge",
+  "Informations Supplémentaires": "Informations Supplémentaires"
 }

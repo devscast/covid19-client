@@ -4,6 +4,7 @@ import {InfosRoutingModule} from './infos-routing.module';
 import {InfosComponent} from './infos.component';
 import {FormsModule} from '@angular/forms';
 import {ComponentsModule} from '../../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [InfosComponent],
@@ -11,7 +12,8 @@ import {ComponentsModule} from '../../components/components.module';
     CommonModule,
     InfosRoutingModule,
     FormsModule,
-    ComponentsModule
+    ComponentsModule,
+    TranslateModule,
   ]
 })
 export class InfosModule {
