@@ -7,6 +7,8 @@ import { CountriesComponent } from './countries.component';
 import { ComponentsModule } from '../../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CountriesRoutingModule,
     ComponentsModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    TranslateModule,
   ]
 })
 export class CountriesModule {

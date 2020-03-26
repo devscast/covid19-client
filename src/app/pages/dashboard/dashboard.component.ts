@@ -3,6 +3,7 @@ import {Article, Dashboard, Case, CongoCase} from 'src/app/api.model';
 import {ApiService} from 'src/app/api.service';
 import sweetAlert from 'sweetalert2';
 import {DomSanitizer} from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   articles: Article[];
   timer: any;
 
-  constructor(private apiService: ApiService, private domSanitizer: DomSanitizer) {
+  constructor(
+    private apiService: ApiService,
+    private domSanitizer: DomSanitizer,
+    public translate: TranslateService,
+  ) {
   }
 
   get updatedAt() {
