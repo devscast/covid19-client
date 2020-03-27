@@ -34,7 +34,7 @@ export interface Case {
   active: number;
   admin2?: any;
   fips?: any;
-  combinedKey?: null;
+  combinedKey: string;
   iso2: string;
   iso3: string;
 }

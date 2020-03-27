@@ -18,7 +18,6 @@ export class CountriesComponent implements OnInit {
   sortBy = '';
   data: Case[];
   currentPage: number = null;
-  filteredData: Case[];
 
   constructor(
     private apiService: ApiService,
@@ -36,8 +35,42 @@ export class CountriesComponent implements OnInit {
           data.map(d => {
             d.url = encodeURI(`${d.countryRegion}--${d.long}--${d.lat}`).toLowerCase();
           });
-          this.data = data;
-          this.filteredData = data;
+
+          const combinedData = data.reduce((acc, item) => {
+            /*
+              To handle countries without other information such as iso2, iso3
+              Example of country: DRC, Ivory Coast, etc
+            */
+            const iso2 = item.iso2 || item.combinedKey;
+
+            if (!acc[iso2]) {
+              acc[iso2] = [];
+            }
+
+            acc[iso2].push(item);
+
+            return acc;
+          }, {});
+
+          const countries = [];
+
+          Object.keys(combinedData).forEach(index => {
+            const items = combinedData[index];
+            const country = items.reduce((acc: Case, item: Case) => {
+              return {
+                ...acc,
+                confirmed: acc.confirmed + item.confirmed,
+                recovered: acc.recovered + item.recovered,
+                active: acc.active + item.active,
+                deaths: acc.deaths + item.deaths,
+              };
+            });
+            if (country) {
+              countries.push(country);
+            }
+          });
+
+          this.data = countries;
           this.loading = false;
         }, e => {
           sweetAlert.fire(

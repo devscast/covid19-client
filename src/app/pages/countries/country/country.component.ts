@@ -20,7 +20,7 @@ export class CountryComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private apiService: ApiService) {
     this.route.params.subscribe(p => {
       this.params = p;
-      if (typeof history.state.data.country !== 'undefined') {
+      if (history.state.data && typeof history.state.data.country !== 'undefined') {
         this.data = history.state.data.country;
       }
     });
@@ -36,7 +36,8 @@ export class CountryComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           const country = data.find(d => {
-            return encodeURI(`${d.countryRegion}--${d.long}--${d.lat}`).toLowerCase() === this.params.id;
+            return encodeURI(`${d.countryRegion}--${d.long}--${d.lat}`).toLowerCase() === this.params.id
+            || d.iso2 === this.params.id;
           });
           if (country) {
             this.data = country;
