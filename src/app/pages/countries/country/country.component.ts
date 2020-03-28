@@ -50,7 +50,7 @@ export class CountryComponent implements OnInit, OnDestroy {
         e => {
           sweetAlert.fire(
             'Désolé',
-            'Données temporairement Indisponible, Veuillez consulter la Carte En Attendant',
+            'Les données temporairement indisponibles, veuillez consulter la Carte en attendant',
             'warning'
           );
           this.loading = false;

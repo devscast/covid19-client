@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   open = false;
   language = { name: 'Francais', locale: 'li' };
   languages = [
-    { name: 'Francais', locale: 'fr' },
+    { name: 'Fran&ccedil;ais', locale: 'fr' },
     { name: 'Lingala', locale: 'li' },
     { name: 'Swahili', locale: 'sw' },
   ];
