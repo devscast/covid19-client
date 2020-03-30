@@ -1,0 +1,41 @@
+<div class="max-w-6xl mx-auto px-4 sm:px-6 mt-10">
+    <app-loader *ngIf="loading"></app-loader>
+    <app-error *ngIf="error"></app-error>
+  
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            <span>
+              {{'FAQ' | translate}}
+            </span>
+          </h3>
+          <p class="mt-1 text-sm leading-5 text-gray-500">
+              {{'Tout ce que vous devez sur le Coronavirus Covid-19' | translate }}
+          </p>
+          <div class="tabs mt-5">
+              <div class="tab">
+                  <input type="radio" id="rd1" name="rd">
+                  <label class="tab-label" for="rd1">Comment le coronavirus se propage-t-il ?</label>
+                  <div class="tab-content">
+                    <p class="mt-1 text-sm leading-5 text-gray-500">
+                        Il semble se propager très facilement d'une personne à l'autre, en particulier dans les maisons, les hôpitaux et autres espaces confinés. L'agent pathogène peut être transporté par de minuscules gouttelettes respiratoires qui tombent lorsqu'on tousse ou qu'on éternue. Il peut également être transmis lorsque nous touchons une surface contaminée et que nous nous touchons ensuite le visage.
+                    </p>
+                  </div>
+              </div>
+              <div class="tab">
+                  <input type="radio" id="rd2" name="rd">
+                  <label class="tab-label" for="rd2">Existe-t-il déjà un vaccin ?</label>
+                  <div class="tab-content">
+                    <p class="mt-1 text-sm leading-5 text-gray-500">
+                        Non. Les premiers essais sur l'homme d'un vaccin expérimental ont commencé à la mi-mars. Un développement aussi rapide d'un vaccin potentiel est sans précédent, mais même s'il s'avère sûr et efficace, il ne sera probablement pas disponible avant 12 à 18 mois.
+                    </p>
+                  </div>
+              </div>
+              <div class="tab">
+                  <input type="radio" id="rd3" name="rd">
+                  <label for="rd3" class="tab-close">Fermer tout &times;</label>
+              </div>
+          </div>
+    </div>
+  </div>
+  

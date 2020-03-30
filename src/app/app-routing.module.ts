@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/map/map.module').then(m => m.MapModule),
   },
   {
+    path: 'faq',
+    loadChildren: () => import('./pages/faq/faq.module').then(m => m.FAQModule),
+  },
+  {
     path: '**',
     redirectTo: 'dashboard'
   }
