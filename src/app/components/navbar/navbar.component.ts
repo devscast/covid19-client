@@ -9,9 +9,9 @@ import { TranslateService } from '@ngx-translate/core';
 
 export class NavbarComponent implements OnInit {
   open = false;
-  language = { name: 'Francais', locale: 'li' };
+  language = { name: 'Français', locale: 'fr' };
   languages = [
-    { name: 'Francais', locale: 'fr' },
+    { name: 'Français', locale: 'fr' },
     { name: 'Lingala', locale: 'li' },
     { name: 'Swahili', locale: 'sw' },
   ];
