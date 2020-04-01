@@ -4,10 +4,14 @@ import {DashboardRoutingModule} from './dashboard-routing.module';
 import {DashboardComponent} from './dashboard.component';
 import {ComponentsModule} from '../../components/components.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { AnimatedDigitComponent } from '../../../animated/animated-digit.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [
+    DashboardComponent,
+    AnimatedDigitComponent
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
