@@ -95,10 +95,6 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit{
   @ViewChildren("count") count: QueryList<any>;
 
   ngAfterViewInit() {
-    console.log("afterinit");
-    setTimeout(() => {
-      console.log(this.elRef.nativeElement.innerText);
-    }, 1000);
   }
 
   animateCount() {
