@@ -19,13 +19,19 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './dashboard.component.html',
   styles: []
 })
-export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit{
+export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
   loading: boolean;
   data: Dashboard;
   error = false;
   drc: CongoCase;
   articles: Article[];
   timer: any;
+  title = 'Animated Count';
+
+  nums: Array<number> = [25, 76, 48];
+
+  @ViewChild('oneItem', { static: true }) oneItem: any;
+  @ViewChildren('count') count: QueryList<any>;
 
   constructor(
     private apiService: ApiService,
@@ -87,30 +93,27 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit{
   ngOnDestroy(): void {
     clearInterval(this.timer);
   }
-  title = "Animated Count";
-
-  nums: Array<number> = [25, 76, 48];
-
-  @ViewChild("oneItem", { static: true }) oneItem: any;
-  @ViewChildren("count") count: QueryList<any>;
 
   ngAfterViewInit() {
   }
 
   animateCount() {
-    let _this = this;
+    const thisElement = this;
 
-    let single = this.oneItem.nativeElement.innerHTML;
+    const single = this.oneItem.nativeElement.innerHTML;
 
     this.counterFunc(single, this.oneItem, 300000);
 
     this.count.forEach(item => {
-      _this.counterFunc(item.nativeElement.innerHTML, item, 300000);
+      thisElement.counterFunc(item.nativeElement.innerHTML, item, 300000);
     });
   }
 
   counterFunc(end: number, element: any, duration: number) {
-    let range, current: number, step, timer;
+    let range;
+    let current: number;
+    let step;
+    let timer;
 
     range = end - 0;
     current = 0;
@@ -119,7 +122,7 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit{
     timer = setInterval(() => {
       current += 1;
       element.nativeElement.textContent = current;
-      if (current == end) {
+      if (current === end) {
         clearInterval(timer);
       }
     }, step);

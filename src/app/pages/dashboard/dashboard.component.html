@@ -13,7 +13,7 @@
             <div class="px-6 py-4">
               <div class="text-gray-700 mb-2">{{'Confirmés' | translate}}</div>
 
-                <animated-digit [digit]="drc.confirmed" [duration]="1000"></animated-digit>
+                <app-animated-digit [digit]="drc.confirmed" [duration]="1000"></app-animated-digit>
 
 
             </div>
@@ -23,7 +23,7 @@
           <div class="min-w-full bg-white rounded overflow-hidden shadow">
             <div class="px-6 py-4">
               <div class="text-gray-700 mb-2">{{'Guérisons' | translate}}</div>
-              <animated-digit [digit]="drc.recovered" [duration]="1000"></animated-digit>
+              <app-animated-digit [digit]="drc.recovered" [duration]="1000"></app-animated-digit>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
           <div class="min-w-full bg-white rounded overflow-hidden shadow">
             <div class="px-6 py-4">
               <div class="text-gray-700 mb-2">{{'Morts' | translate}}</div>
-              <animated-digit [digit]="drc.deaths" [duration]="1000"></animated-digit>
+              <app-animated-digit [digit]="drc.deaths" [duration]="1000"></app-animated-digit>
             </div>
           </div>
         </div>
