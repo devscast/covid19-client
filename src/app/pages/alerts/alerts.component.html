@@ -108,11 +108,11 @@
             <div class="relative">
               <label class="inline-flex items-center">
                 <input [(ngModel)]="infectedRelatives" type="radio" class="form-radio" name="infectedRelatives" value="1">
-                <span class="ml-2 text-gray-500">Oui</span>
+                <span class="ml-2 text-gray-600">Oui</span>
               </label>
               <label class="inline-flex items-center ml-6">
                 <input [(ngModel)]="infectedRelatives" type="radio"  class="form-radio" name="infectedRelatives" value="0">
-                <span class="ml-2 text-gray-500">Non</span>
+                <span class="ml-2 text-gray-600">Non</span>
               </label>
             </div>
           </dd>
@@ -125,7 +125,7 @@
             <div class="relative">
               <label class="inline-flex items-center" *ngFor="let i of [1, 2, 3, 4, 5]">
                 <input [(ngModel)]="gesturesBarriersLevel" required type="radio" class="form-radio" name="gesturesBarriersLevel" value="{{i}}">
-                <span class="ml-2 text-gray-500">{{i}}</span>
+                <span class="ml-1 mr-4 text-gray-600">{{i}}</span>
               </label>
             </div>
           </dd>
