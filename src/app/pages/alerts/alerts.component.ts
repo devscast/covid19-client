@@ -50,9 +50,9 @@ export class AlertsComponent implements OnInit {
       lat: this.lat.toString(),
       lng: this.lng.toString(),
       symptoms: this.symptoms.toString(),
-      wellKnownCenter: Boolean(parseInt(this.wellKnownCenter)),
-      infectedRelatives: Boolean(parseInt(this.infectedRelatives)),
-      gesturesBarriersLevel: parseInt(this.gesturesBarriersLevel)
+      wellKnownCenter: Boolean(parseInt(this.wellKnownCenter, 10)),
+      infectedRelatives: Boolean(parseInt(this.infectedRelatives, 10)),
+      gesturesBarriersLevel: parseInt(this.gesturesBarriersLevel, 10)
     })
       .subscribe(
         () => {
