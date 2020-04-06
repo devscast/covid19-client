@@ -98,10 +98,13 @@ export interface Contact {
 }
 
 export interface Alert {
-  number: string;
-  lat: string;
   lng: string;
-  symptoms: string;
+  lat: string;
+  age?: number;
+  sex?: string;
   infos?: string;
+  number: string;
   status?: string;
+  symptoms: string;
+  wellKnownCenter?: boolean;
 }
