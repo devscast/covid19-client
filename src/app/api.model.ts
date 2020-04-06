@@ -108,4 +108,5 @@ export interface Alert {
   symptoms: string;
   wellKnownCenter?: boolean;
   infectedRelatives?: boolean;
+  gesturesBarriersLevel: number;
 }
