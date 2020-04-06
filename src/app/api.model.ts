@@ -107,4 +107,5 @@ export interface Alert {
   status?: string;
   symptoms: string;
   wellKnownCenter?: boolean;
+  infectedRelatives?: boolean;
 }

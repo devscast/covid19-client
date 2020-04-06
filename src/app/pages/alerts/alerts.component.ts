@@ -20,6 +20,7 @@ export class AlertsComponent implements OnInit {
   age: number;
   sex: string;
   wellKnownCenter: boolean;
+  infectedRelatives: boolean;
 
   constructor(
     private apiService: ApiService,
@@ -48,7 +49,8 @@ export class AlertsComponent implements OnInit {
       lat: this.lat.toString(),
       lng: this.lng.toString(),
       symptoms: this.symptoms.toString(),
-      wellKnownCenter: this.wellKnownCenter
+      wellKnownCenter: this.wellKnownCenter,
+      infectedRelatives: this.infectedRelatives
     })
       .subscribe(
         () => {
