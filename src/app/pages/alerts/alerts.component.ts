@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import sweetAlert from 'sweetalert2';
 import {ApiService} from '../../api.service';
 import {Router} from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-alerts',
@@ -17,6 +17,11 @@ export class AlertsComponent implements OnInit {
   infos: string;
   lat: number;
   lng: number;
+  age: number;
+  sex: string;
+  wellKnownCenter: string;
+  infectedRelatives: string;
+  gesturesBarriersLevel: string;
 
   constructor(
     private apiService: ApiService,
@@ -38,11 +43,16 @@ export class AlertsComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     this.apiService.addAlert({
-      number: this.number,
-      symptoms: this.symptoms.toString(),
+      age: this.age,
+      sex: this.sex,
       infos: this.infos,
+      number: this.number,
       lat: this.lat.toString(),
-      lng: this.lng.toString()
+      lng: this.lng.toString(),
+      symptoms: this.symptoms.toString(),
+      wellKnownCenter: Boolean(parseInt(this.wellKnownCenter, 10)),
+      infectedRelatives: Boolean(parseInt(this.infectedRelatives, 10)),
+      gesturesBarriersLevel: parseInt(this.gesturesBarriersLevel, 10)
     })
       .subscribe(
         () => {

@@ -9,8 +9,7 @@
           {{'Signaler un cas suspect' | translate}}
           <br>
           <div class="mt-5 mb-5">
-            <img style="display: inline-block" class="h-10 w-10" src="https://www.countryflags.io/CD/flat/64.png" alt="i"/>
-          &nbsp;
+            <img style="display: inline-block" class="h-10 w-10" src="https://www.countryflags.io/CD/flat/64.png" alt="i"/>&nbsp;
             <img style="display: inline-block" class="h-10 w-15" src="assets/santeptntic.png" alt="i"/>
           </div>
         </span>
@@ -32,10 +31,40 @@
             <label for="inline-full-name"></label>
             <input [(ngModel)]="number" name="number" required
                    class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-                   id="inline-full-name" placeholder="+243....." type="text">
+                   id="inline-full-name" placeholder="+243....." type="tel">
           </dd>
         </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Âge
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <label for="age"></label>
+            <input [(ngModel)]="age" name="age" required
+                   class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
+                   id="age" placeholder="votre âge..." type="number">
+          </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Sexe
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <div class="relative">
+              <label for="sex"></label>
+              <select [(ngModel)]="sex" required name="sex" class="block shadow appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sex">
+                <option selected value="M">Masculin</option>
+                <option value="F">Féminin</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                </svg>
+              </div>
+            </div>
+          </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm leading-5 font-medium text-gray-500">
             {{'Symptômes' | translate}}
           </dt>
@@ -56,20 +85,64 @@
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm leading-5 font-medium text-gray-500">
+            Connaissez vous le centre de prise en charge le plus proche
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <div class="relative">
+              <label class="inline-flex items-center">
+                <input [(ngModel)]="wellKnownCenter" type="radio" class="form-radio" name="wellKnownCenter" value="1">
+                <span class="ml-2 text-gray-500">Oui</span>
+              </label>
+              <label class="inline-flex items-center ml-6">
+                <input [(ngModel)]="wellKnownCenter" type="radio"  class="form-radio" name="wellKnownCenter" value="0">
+                <span class="ml-2 text-gray-500">Non</span>
+              </label>
+            </div>
+          </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Pensez-vous qu'il y a d'autres cas dans votre entourage
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <div class="relative">
+              <label class="inline-flex items-center">
+                <input [(ngModel)]="infectedRelatives" type="radio" class="form-radio" name="infectedRelatives" value="1">
+                <span class="ml-2 text-gray-600">Oui</span>
+              </label>
+              <label class="inline-flex items-center ml-6">
+                <input [(ngModel)]="infectedRelatives" type="radio"  class="form-radio" name="infectedRelatives" value="0">
+                <span class="ml-2 text-gray-600">Non</span>
+              </label>
+            </div>
+          </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Pensez-vous que les gestes barrières sont respectés
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+            <div class="relative">
+              <label class="inline-flex items-center" *ngFor="let i of [1, 2, 3, 4, 5]">
+                <input [(ngModel)]="gesturesBarriersLevel" required type="radio" class="form-radio" name="gesturesBarriersLevel" value="{{i}}">
+                <span class="ml-1 mr-4 text-gray-600">{{i}}</span>
+              </label>
+            </div>
+          </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
             {{'Informations Supplémentaires' | translate}}
           </dt>
           <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
             <label for="infos"></label>
-            <textarea [(ngModel)]="infos" name="infos" id="infos" rows="5"
-                      placeholder="rajouter des informations qui pourront nous aider..."
-                      class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"></textarea>
+            <textarea [(ngModel)]="infos" name="infos" id="infos" rows="5" placeholder="rajouter des informations qui pourront nous aider..." class="bg-gray-200 shadow appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"></textarea>
           </dd>
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm leading-5 font-medium text-gray-500"></dt>
           <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-            <button type="submit"
-                    class="w-full shadow bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            <button type="submit" class="w-full shadow bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
               {{'Envoyer' | translate }}
             </button>
           </dd>
