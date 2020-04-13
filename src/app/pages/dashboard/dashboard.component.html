@@ -6,17 +6,16 @@
     <div class="mb-10" *ngIf="drc">
       <div class="px-2 mb-5">
         <div class="text-grey-700 text-lg font-bold">{{'Situation en RDC' | translate}} </div>
-        <span class="text-gray-600 text-md">{{'Mise à jour' | translate}} : {{ updatedAt }}</span> <br>
-        <span class="text-gray-600 text-md">{{'Actualisation toutes les 3 heures.' | translate }}</span>
       </div>
       <div class="grid grid-cols-6 gap-4">
         <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
           <div class="min-w-full bg-white rounded overflow-hidden shadow">
             <div class="px-6 py-4">
               <div class="text-gray-700 mb-2">{{'Confirmés' | translate}}</div>
-              <p class="font-bold text-xl text-base">
-                {{ drc.confirmed }}
-              </p>
+
+                <app-animated-digit [digit]="drc.confirmed" [duration]="1000"></app-animated-digit>
+
+
             </div>
           </div>
         </div>
@@ -24,19 +23,15 @@
           <div class="min-w-full bg-white rounded overflow-hidden shadow">
             <div class="px-6 py-4">
               <div class="text-gray-700 mb-2">{{'Guérisons' | translate}}</div>
-              <p class="font-bold text-xl text-base">
-                {{ drc.recovered }}
-              </p>
+              <app-animated-digit [digit]="drc.recovered" [duration]="1000"></app-animated-digit>
             </div>
           </div>
         </div>
-        <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
+        <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2 red">
           <div class="min-w-full bg-white rounded overflow-hidden shadow">
             <div class="px-6 py-4">
               <div class="text-gray-700 mb-2">{{'Morts' | translate}}</div>
-              <p class="font-bold text-xl text-base">
-                {{ drc.deaths }}
-              </p>
+              <app-animated-digit [digit]="drc.deaths" [duration]="1000"></app-animated-digit>
             </div>
           </div>
         </div>
@@ -46,7 +41,6 @@
      <div class="px-2 mb-5">
        <div class="text-lg font-bold">{{'Situation Globale' | translate}}</div>
        <span class="text-gray-600 text-md">{{'Mise à jour'| translate}} : {{ updatedAt }}</span> <br>
-       <span class="text-gray-600 text-md">{{'Actualisation toutes les 3 heures.' | translate}}</span>
      </div>
      <div class="grid grid-cols-6 gap-4">
        <div class="col-span-6 md:col-span-2 lg:col-span-2 px-2">
