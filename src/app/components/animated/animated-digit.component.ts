@@ -5,13 +5,16 @@ import {
   AfterViewInit,
   ViewChild,
   OnChanges,
-  SimpleChanges, ViewChildren
+  SimpleChanges,
 } from '@angular/core';
 
 @Component({
   selector: 'app-animated-digit',
-  templateUrl: 'animated-digit.component.html',
-  styleUrls: ['animated-digit.component.scss']
+  template: `
+    <div #animatedDigit class="font-bold text-xl text-base">
+      <span>{{digit}}</span>
+    </div>
+  `,
 })
 export class AnimatedDigitComponent implements AfterViewInit, OnChanges {
   @Input() duration: number;
@@ -25,8 +28,7 @@ export class AnimatedDigitComponent implements AfterViewInit, OnChanges {
     }
 
     if (this.digit) {
-      // tslint:disable-next-line:radix
-      this.counterFunc(parseInt(this.digit), this.duration, this.animatedDigit);
+      this.counterFunc(parseInt(this.digit, 10), this.duration, this.animatedDigit);
     }
   }
 

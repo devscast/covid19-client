@@ -1,43 +1,27 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-  ViewChildren,
-  QueryList,
-  OnDestroy
-} from '@angular/core';
-import {Article, Dashboard, Case, CongoCase} from 'src/app/api.model';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Article, Dashboard, CongoCase} from 'src/app/api.model';
 import {ApiService} from 'src/app/api.service';
 import sweetAlert from 'sweetalert2';
 import {DomSanitizer} from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styles: []
 })
-export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   loading: boolean;
   data: Dashboard;
   error = false;
   drc: CongoCase;
   articles: Article[];
   timer: any;
-  title = 'Animated Count';
-
-  nums: Array<number> = [25, 76, 48];
-
-  @ViewChild('oneItem', { static: true }) oneItem: any;
-  @ViewChildren('count') count: QueryList<any>;
 
   constructor(
     private apiService: ApiService,
     private domSanitizer: DomSanitizer,
     public translate: TranslateService,
-    private elRef: ElementRef
   ) {
   }
 
@@ -92,39 +76,5 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     clearInterval(this.timer);
-  }
-
-  ngAfterViewInit() {
-  }
-
-  animateCount() {
-    const thisElement = this;
-
-    const single = this.oneItem.nativeElement.innerHTML;
-
-    this.counterFunc(single, this.oneItem, 300000);
-
-    this.count.forEach(item => {
-      thisElement.counterFunc(item.nativeElement.innerHTML, item, 300000);
-    });
-  }
-
-  counterFunc(end: number, element: any, duration: number) {
-    let range;
-    let current: number;
-    let step;
-    let timer;
-
-    range = end - 0;
-    current = 0;
-    step = Math.abs(Math.floor(duration / range));
-
-    timer = setInterval(() => {
-      current += 1;
-      element.nativeElement.textContent = current;
-      if (current === end) {
-        clearInterval(timer);
-      }
-    }, step);
   }
 }
