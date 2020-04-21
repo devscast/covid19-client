@@ -79,7 +79,7 @@ export class SuspectsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.load();
-    setInterval(this.load, 30000);
+    this.timer = setInterval(this.load, 30000);
   }
 
   ngOnDestroy(): void {
