@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import sweetAlert from 'sweetalert2';
 import {Router, ActivatedRoute} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Subscription} from 'rxjs';
@@ -76,14 +75,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
           });
 
           this.data = countries;
-        }, e => {
-          sweetAlert.fire(
-            'Oups',
-            'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
-            'warning'
-          );
-          this.error = true;
-        }
+        }, () => this.error = true
       );
   }
 

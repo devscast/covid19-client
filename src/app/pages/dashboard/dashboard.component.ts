@@ -1,6 +1,5 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Article, Dashboard, CongoCase} from '../../models/backend.model';
-import sweetAlert from 'sweetalert2';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 
@@ -50,19 +49,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   load() {
     this.covid19Service.getDashboard()
-      .subscribe(
-        data => {
-          this.data = data;
-        },
-        e => {
-          sweetAlert.fire(
-            'Oups',
-            'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
-            'error'
-          );
-          this.error = true;
-        }
-      );
+      .subscribe(data => this.data = data, () => this.error = true);
   }
 
   ngOnInit(): void {

@@ -30,27 +30,15 @@ export class InfosComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    const request = () => {
+    this.subscription.add(
       this.backendService.addContact({number: this.number, lang: this.lang})
         .subscribe(
-          () => {
-            sweetAlert.fire('Succès', 'Vous Recevrez désormais les mises à jour par SMS', 'success');
-            this.router.navigate(['/dashboard']);
-          },
-          e => {
-            if (e.status === 400) {
-              sweetAlert.fire('Erreur', e.error.detail, 'warning');
-            } else {
-              sweetAlert.fire(
-                'Oups',
-                'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
-                'warning'
-              );
-            }
-          },
-        );
-    };
-    this.subscription.add(request());
+          async () => {
+            await sweetAlert.fire('Succès', 'Vous Recevrez désormais les mises à jour par SMS', 'success');
+            await this.router.navigate(['/dashboard']);
+          }
+        )
+    );
   }
 
   ngOnDestroy(): void {

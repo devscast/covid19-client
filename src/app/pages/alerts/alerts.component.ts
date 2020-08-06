@@ -5,6 +5,7 @@ import {TranslateService} from '@ngx-translate/core';
 
 import {BackendService} from '../../services/backend.service';
 import {Subscription} from 'rxjs';
+import {Alert} from '../../models/backend.model';
 
 @Component({
   selector: 'app-alerts',
@@ -12,7 +13,6 @@ import {Subscription} from 'rxjs';
   styles: []
 })
 export class AlertsComponent implements OnInit, OnDestroy {
-  error: boolean;
   number: string;
   symptoms: string;
   infos: string;
@@ -39,7 +39,9 @@ export class AlertsComponent implements OnInit, OnDestroy {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
       },
-      e => sweetAlert.fire('Error', 'Impossible de vous géolocaliser, Réessayez plus tard', 'warning')
+      async () => {
+        await sweetAlert.fire('Error', 'Impossible de vous géolocaliser, Réessayez plus tard', 'warning');
+      }
     );
   }
 
@@ -58,21 +60,10 @@ export class AlertsComponent implements OnInit, OnDestroy {
         gesturesBarriersLevel: parseInt(this.gesturesBarriersLevel, 10)
       })
         .subscribe(
-          () => {
-            sweetAlert.fire('Succès', 'Nous avons reçu votre signalement', 'success');
-            this.router.navigate(['/dashboard']);
-          },
-          e => {
-            if (e.status === 400) {
-              sweetAlert.fire('Erreur', e.error.detail, 'warning');
-            } else {
-              sweetAlert.fire(
-                'Oups',
-                'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
-                'warning'
-              );
-            }
-          },
+          async () => {
+            await sweetAlert.fire('Succès', 'Nous avons reçu votre signalement', 'success');
+            await this.router.navigate(['/dashboard']);
+          }
         );
     };
     this.subscription.add(request());

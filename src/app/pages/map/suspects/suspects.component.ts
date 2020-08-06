@@ -52,8 +52,8 @@ export class SuspectsComponent implements OnInit, OnDestroy {
                   .addTo(map);
               });
             },
-            e => {
-              sweetAlert.fire('Error', 'Impossible de vous géolocaliser, Réessayez plus tard', 'warning');
+            async () => {
+              await sweetAlert.fire('Error', 'Impossible de vous géolocaliser, Réessayez plus tard', 'warning');
               this.error = true;
             },
             {
@@ -64,14 +64,7 @@ export class SuspectsComponent implements OnInit, OnDestroy {
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           }).addTo(map);
         },
-        e => {
-          sweetAlert.fire(
-            'Oups',
-            'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
-            'warning'
-          );
-          this.error = true;
-        }
+        () => this.error = true
       );
   }
 

@@ -68,14 +68,7 @@ export class MapComponent implements OnInit, OnDestroy {
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           }).addTo(map);
         },
-        e => {
-          sweetAlert.fire(
-            'Oups',
-            'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
-            'warning'
-          );
-          this.error = true;
-        }
+        () => this.error = true
       );
   }
 

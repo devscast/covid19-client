@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import sweetAlert from 'sweetalert2';
 
 import {Covid19Service} from '../../../services/covid19.service';
 import {Case} from '../../../models/covid19.model';
@@ -45,14 +44,7 @@ export class CountryComponent implements OnInit, OnDestroy {
             this.error = true;
           }
         },
-        e => {
-          sweetAlert.fire(
-            'Désolé',
-            'Données temporairement Indisponible, Veuillez consulter la Carte En Attendant',
-            'warning'
-          );
-          this.error = true;
-        }
+        () => this.error = true
       );
   }
 
