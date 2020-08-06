@@ -13,7 +13,6 @@ import {Covid19Service} from '../../services/covid19.service';
   styles: []
 })
 export class CountriesComponent implements OnInit, OnDestroy {
-  loading: boolean;
   error = false;
   searchText: string;
   sortBy = '';
@@ -35,7 +34,6 @@ export class CountriesComponent implements OnInit, OnDestroy {
   }
 
   load() {
-    this.loading = true;
     this.covid19Service.getConfirmed()
       .subscribe(
         data => {
@@ -78,14 +76,12 @@ export class CountriesComponent implements OnInit, OnDestroy {
           });
 
           this.data = countries;
-          this.loading = false;
         }, e => {
           sweetAlert.fire(
             'Oups',
             'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
             'warning'
           );
-          this.loading = false;
           this.error = true;
         }
       );

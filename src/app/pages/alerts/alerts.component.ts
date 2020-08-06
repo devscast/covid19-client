@@ -12,7 +12,6 @@ import {Subscription} from 'rxjs';
   styles: []
 })
 export class AlertsComponent implements OnInit, OnDestroy {
-  loading: boolean;
   error: boolean;
   number: string;
   symptoms: string;
@@ -46,7 +45,6 @@ export class AlertsComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const request = () => {
-      this.loading = true;
       this.backendService.addAlert({
         age: this.age,
         sex: this.sex,
@@ -61,13 +59,11 @@ export class AlertsComponent implements OnInit, OnDestroy {
       })
         .subscribe(
           () => {
-            this.loading = false;
             sweetAlert.fire('Succès', 'Nous avons reçu votre signalement', 'success');
             this.router.navigate(['/dashboard']);
           },
           e => {
             if (e.status === 400) {
-              this.loading = false;
               sweetAlert.fire('Erreur', e.error.detail, 'warning');
             } else {
               sweetAlert.fire(
@@ -75,7 +71,6 @@ export class AlertsComponent implements OnInit, OnDestroy {
                 'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
                 'warning'
               );
-              this.loading = false;
             }
           },
         );

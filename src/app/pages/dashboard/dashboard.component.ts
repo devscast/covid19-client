@@ -14,7 +14,6 @@ import {Subscription} from 'rxjs';
   styles: []
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  loading: boolean;
   data: Dashboard;
   error = false;
   drc: CongoCase;
@@ -46,17 +45,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   loadDRC() {
-    this.loading = true;
     this.backendService.getCongoCase().subscribe(data => this.drc = data);
   }
 
   load() {
-    this.loading = true;
     this.covid19Service.getDashboard()
       .subscribe(
         data => {
           this.data = data;
-          this.loading = false;
         },
         e => {
           sweetAlert.fire(
@@ -64,7 +60,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
             'error'
           );
-          this.loading = false;
           this.error = true;
         }
       );

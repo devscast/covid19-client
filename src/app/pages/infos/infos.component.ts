@@ -15,7 +15,6 @@ import {Subscription} from 'rxjs';
 export class InfosComponent implements OnInit, OnDestroy {
   lang: string;
   number: string;
-  loading: boolean;
   error: boolean;
 
   private subscription = new Subscription();
@@ -32,17 +31,14 @@ export class InfosComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const request = () => {
-      this.loading = true;
       this.backendService.addContact({number: this.number, lang: this.lang})
         .subscribe(
           () => {
-            this.loading = false;
             sweetAlert.fire('Succès', 'Vous Recevrez désormais les mises à jour par SMS', 'success');
             this.router.navigate(['/dashboard']);
           },
           e => {
             if (e.status === 400) {
-              this.loading = false;
               sweetAlert.fire('Erreur', e.error.detail, 'warning');
             } else {
               sweetAlert.fire(
@@ -50,7 +46,6 @@ export class InfosComponent implements OnInit, OnDestroy {
                 'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
                 'warning'
               );
-              this.loading = false;
             }
           },
         );

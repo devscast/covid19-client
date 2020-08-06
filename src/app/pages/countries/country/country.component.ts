@@ -13,7 +13,6 @@ import {Subscription} from 'rxjs';
 })
 export class CountryComponent implements OnInit, OnDestroy {
   params: Params;
-  loading: boolean;
   error = false;
   name: string;
   data: Case;
@@ -33,7 +32,6 @@ export class CountryComponent implements OnInit, OnDestroy {
   }
 
   load() {
-    this.loading = true;
     this.covid19Service.getConfirmed()
       .subscribe(
         data => {
@@ -43,10 +41,8 @@ export class CountryComponent implements OnInit, OnDestroy {
           });
           if (country) {
             this.data = country;
-            this.loading = false;
           } else {
             this.error = true;
-            this.loading = false;
           }
         },
         e => {
@@ -55,7 +51,6 @@ export class CountryComponent implements OnInit, OnDestroy {
             'Données temporairement Indisponible, Veuillez consulter la Carte En Attendant',
             'warning'
           );
-          this.loading = false;
           this.error = true;
         }
       );

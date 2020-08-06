@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {HTTP_INTERCEPTORS, HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ComponentsModule} from './components/components.module';
-import {HeadersInterceptor} from './interceptors/headers.interceptor';
+import {interceptorProviders} from './app.interceptor';
+import {LoaderService} from './services/loader.service';
 
 
 // loader module
@@ -34,7 +35,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true},
+    interceptorProviders,
+    LoaderService,
     TranslateService,
   ],
   bootstrap: [AppComponent]

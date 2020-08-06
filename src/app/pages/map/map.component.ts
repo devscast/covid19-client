@@ -14,7 +14,6 @@ export class MapComponent implements OnInit, OnDestroy {
   lat: number;
   lng: number;
   data: Case[];
-  loading: boolean;
   error = false;
   private subscription = new Subscription();
 
@@ -22,12 +21,10 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   load() {
-    this.loading = true;
     this.covid19Service.getConfirmed()
       .subscribe(
         data => {
           this.data = data;
-          this.loading = false;
 
           const map = L.map('map');
           navigator.geolocation.getCurrentPosition(
@@ -77,7 +74,6 @@ export class MapComponent implements OnInit, OnDestroy {
             'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
             'warning'
           );
-          this.loading = false;
           this.error = true;
         }
       );

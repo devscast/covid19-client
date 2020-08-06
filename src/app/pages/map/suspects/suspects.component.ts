@@ -12,7 +12,6 @@ import {Subscription} from 'rxjs';
   styles: []
 })
 export class SuspectsComponent implements OnInit, OnDestroy {
-  loading: boolean;
   error: boolean;
   lat: number;
   lng: number;
@@ -23,12 +22,10 @@ export class SuspectsComponent implements OnInit, OnDestroy {
   }
 
   load() {
-    this.loading = true;
     this.backendService.getAlerts()
       .subscribe(
         data => {
           this.data = data;
-          this.loading = false;
 
           const map = L.map('map');
           navigator.geolocation.getCurrentPosition(
@@ -73,7 +70,6 @@ export class SuspectsComponent implements OnInit, OnDestroy {
             'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
             'warning'
           );
-          this.loading = false;
           this.error = true;
         }
       );
