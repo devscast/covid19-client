@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 
 import {BackendService} from '../../services/backend.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-alerts',
@@ -24,6 +25,8 @@ export class AlertsComponent implements OnInit, OnDestroy {
   infectedRelatives: string;
   gesturesBarriersLevel: string;
 
+  private subscription = new Subscription();
+
   constructor(
     private backendService: BackendService,
     private router: Router,
@@ -42,42 +45,45 @@ export class AlertsComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.loading = true;
-    this.backendService.addAlert({
-      age: this.age,
-      sex: this.sex,
-      infos: this.infos,
-      number: this.number,
-      lat: this.lat.toString(),
-      lng: this.lng.toString(),
-      symptoms: this.symptoms.toString(),
-      wellKnownCenter: Boolean(parseInt(this.wellKnownCenter, 10)),
-      infectedRelatives: Boolean(parseInt(this.infectedRelatives, 10)),
-      gesturesBarriersLevel: parseInt(this.gesturesBarriersLevel, 10)
-    })
-      .subscribe(
-        () => {
-          this.loading = false;
-          sweetAlert.fire('Succès', 'Nous avons reçu votre signalement', 'success');
-          this.router.navigate(['/dashboard']);
-        },
-        e => {
-          if (e.status === 400) {
+    const request = () => {
+      this.loading = true;
+      this.backendService.addAlert({
+        age: this.age,
+        sex: this.sex,
+        infos: this.infos,
+        number: this.number,
+        lat: this.lat.toString(),
+        lng: this.lng.toString(),
+        symptoms: this.symptoms.toString(),
+        wellKnownCenter: Boolean(parseInt(this.wellKnownCenter, 10)),
+        infectedRelatives: Boolean(parseInt(this.infectedRelatives, 10)),
+        gesturesBarriersLevel: parseInt(this.gesturesBarriersLevel, 10)
+      })
+        .subscribe(
+          () => {
             this.loading = false;
-            sweetAlert.fire('Erreur', e.error.detail, 'warning');
-          } else {
-            sweetAlert.fire(
-              'Oups',
-              'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
-              'warning'
-            );
-            this.loading = false;
-          }
-        },
-      );
+            sweetAlert.fire('Succès', 'Nous avons reçu votre signalement', 'success');
+            this.router.navigate(['/dashboard']);
+          },
+          e => {
+            if (e.status === 400) {
+              this.loading = false;
+              sweetAlert.fire('Erreur', e.error.detail, 'warning');
+            } else {
+              sweetAlert.fire(
+                'Oups',
+                'Impossible de contacter le Serveur, Vérifiez votre connexion internet',
+                'warning'
+              );
+              this.loading = false;
+            }
+          },
+        );
+    };
+    this.subscription.add(request());
   }
 
   ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
-
 }

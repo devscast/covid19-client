@@ -3,6 +3,7 @@ import L from 'leaflet';
 import sweetAlert from 'sweetalert2';
 import {Covid19Service} from '../../services/covid19.service';
 import {Case} from '../../models/covid19.model';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -15,6 +16,7 @@ export class MapComponent implements OnInit, OnDestroy {
   data: Case[];
   loading: boolean;
   error = false;
+  private subscription = new Subscription();
 
   constructor(private covid19Service: Covid19Service) {
   }
@@ -82,9 +84,10 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.load();
+    this.subscription.add(this.load());
   }
 
   ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

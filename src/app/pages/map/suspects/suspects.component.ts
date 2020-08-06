@@ -4,6 +4,7 @@ import L from 'leaflet';
 
 import {BackendService} from '../../../services/backend.service';
 import {Alert} from '../../../models/backend.model';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-suspects',
@@ -16,6 +17,7 @@ export class SuspectsComponent implements OnInit, OnDestroy {
   lat: number;
   lng: number;
   data: Alert[];
+  private subscription = new Subscription();
 
   constructor(private backendService: BackendService) {
   }
@@ -78,9 +80,10 @@ export class SuspectsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.load();
+    this.subscription.add(this.load());
   }
 
   ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

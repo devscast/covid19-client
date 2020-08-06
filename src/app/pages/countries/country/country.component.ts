@@ -4,6 +4,7 @@ import sweetAlert from 'sweetalert2';
 
 import {Covid19Service} from '../../../services/covid19.service';
 import {Case} from '../../../models/covid19.model';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-country',
@@ -16,6 +17,7 @@ export class CountryComponent implements OnInit, OnDestroy {
   error = false;
   name: string;
   data: Case;
+  private subscription = new Subscription();
 
   constructor(private route: ActivatedRoute, private covid19Service: Covid19Service) {
     this.route.params.subscribe(p => {
@@ -60,9 +62,10 @@ export class CountryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.load();
+    this.subscription.add(this.load());
   }
 
   ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

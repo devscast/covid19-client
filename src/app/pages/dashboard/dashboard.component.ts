@@ -6,6 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 
 import {BackendService} from '../../services/backend.service';
 import {Covid19Service} from '../../services/covid19.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +19,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   error = false;
   drc: CongoCase;
   articles: Article[];
+  private subscription = new Subscription();
 
   constructor(
     private backendService: BackendService,
@@ -69,11 +71,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.loadDRC();
-    this.load();
-    this.loadArticles();
+    this.subscription.add(this.loadDRC());
+    this.subscription.add(this.load());
+    this.subscription.add(this.loadArticles());
   }
 
   ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

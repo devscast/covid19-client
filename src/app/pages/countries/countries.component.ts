@@ -1,23 +1,25 @@
-import {Component, OnInit} from '@angular/core';
-import {Case} from '../../models/covid19.model';
-import {Covid19Service} from '../../services/covid19.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import sweetAlert from 'sweetalert2';
 import {Router, ActivatedRoute} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {Subscription} from 'rxjs';
 
+import {Case} from '../../models/covid19.model';
+import {Covid19Service} from '../../services/covid19.service';
 
 @Component({
   selector: 'app-countries',
   templateUrl: './countries.component.html',
   styles: []
 })
-export class CountriesComponent implements OnInit {
+export class CountriesComponent implements OnInit, OnDestroy {
   loading: boolean;
   error = false;
   searchText: string;
   sortBy = '';
   data: Case[];
   currentPage: number = null;
+  private subscription = new Subscription();
 
   constructor(
     private covid19Service: Covid19Service,
@@ -28,6 +30,11 @@ export class CountriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.subscription.add(this.load());
+    this.getPageQueryParam();
+  }
+
+  load() {
     this.loading = true;
     this.covid19Service.getConfirmed()
       .subscribe(
@@ -82,7 +89,6 @@ export class CountriesComponent implements OnInit {
           this.error = true;
         }
       );
-    this.getPageQueryParam();
   }
 
   getPageQueryParam() {
@@ -102,5 +108,9 @@ export class CountriesComponent implements OnInit {
       },
       queryParamsHandling: 'merge',
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
