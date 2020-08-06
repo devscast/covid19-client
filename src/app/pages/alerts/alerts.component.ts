@@ -5,7 +5,6 @@ import {TranslateService} from '@ngx-translate/core';
 
 import {BackendService} from '../../services/backend.service';
 import {Subscription} from 'rxjs';
-import {Alert} from '../../models/backend.model';
 
 @Component({
   selector: 'app-alerts',
