@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  covidApiUrl: 'https://covid19.mathdro.id/api',
+  backendApiUrl: 'https://katanga.digital/api'
 };
 
 /*

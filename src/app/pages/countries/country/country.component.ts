@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {ApiService} from '../../../api.service';
-import {Case} from '../../../api.model';
 import sweetAlert from 'sweetalert2';
+
+import {Covid19Service} from '../../../services/covid19.service';
+import {Case} from '../../../models/covid19.model';
 
 @Component({
   selector: 'app-country',
@@ -15,9 +16,8 @@ export class CountryComponent implements OnInit, OnDestroy {
   error = false;
   name: string;
   data: Case;
-  timer: any;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {
+  constructor(private route: ActivatedRoute, private covid19Service: Covid19Service) {
     this.route.params.subscribe(p => {
       this.params = p;
       if (history.state.data && typeof history.state.data.country !== 'undefined') {
@@ -32,12 +32,12 @@ export class CountryComponent implements OnInit, OnDestroy {
 
   load() {
     this.loading = true;
-    this.apiService.getConfirmed()
+    this.covid19Service.getConfirmed()
       .subscribe(
         data => {
           const country = data.find(d => {
             return encodeURI(`${d.countryRegion}--${d.long}--${d.lat}`).toLowerCase() === this.params.id
-            || d.iso2 === this.params.id;
+              || d.iso2 === this.params.id;
           });
           if (country) {
             this.data = country;
@@ -61,10 +61,8 @@ export class CountryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.load();
-    this.timer = setInterval(this.load, 300000);
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.timer);
   }
 }

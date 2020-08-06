@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ApiService} from '../../../api.service';
-import {Alert} from '../../../api.model';
 import sweetAlert from 'sweetalert2';
 import L from 'leaflet';
+
+import {BackendService} from '../../../services/backend.service';
+import {Alert} from '../../../models/backend.model';
 
 @Component({
   selector: 'app-suspects',
@@ -15,14 +16,13 @@ export class SuspectsComponent implements OnInit, OnDestroy {
   lat: number;
   lng: number;
   data: Alert[];
-  timer: any;
 
-  constructor(private apiService: ApiService) {
+  constructor(private backendService: BackendService) {
   }
 
   load() {
     this.loading = true;
-    this.apiService.getAlerts()
+    this.backendService.getAlerts()
       .subscribe(
         data => {
           this.data = data;
@@ -79,10 +79,8 @@ export class SuspectsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.load();
-    this.timer = setInterval(this.load, 30000);
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.timer);
   }
 }

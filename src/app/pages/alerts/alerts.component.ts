@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import sweetAlert from 'sweetalert2';
-import {ApiService} from '../../api.service';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+
+import {BackendService} from '../../services/backend.service';
 
 @Component({
   selector: 'app-alerts',
   templateUrl: './alerts.component.html',
   styles: []
 })
-export class AlertsComponent implements OnInit {
+export class AlertsComponent implements OnInit, OnDestroy {
   loading: boolean;
   error: boolean;
   number: string;
@@ -24,7 +25,7 @@ export class AlertsComponent implements OnInit {
   gesturesBarriersLevel: string;
 
   constructor(
-    private apiService: ApiService,
+    private backendService: BackendService,
     private router: Router,
     public translate: TranslateService,
   ) {
@@ -42,7 +43,7 @@ export class AlertsComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
-    this.apiService.addAlert({
+    this.backendService.addAlert({
       age: this.age,
       sex: this.sex,
       infos: this.infos,
@@ -74,6 +75,9 @@ export class AlertsComponent implements OnInit {
           }
         },
       );
+  }
+
+  ngOnDestroy(): void {
   }
 
 }

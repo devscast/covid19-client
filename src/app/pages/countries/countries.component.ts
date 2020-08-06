@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Case } from 'src/app/api.model';
-import { ApiService } from 'src/app/api.service';
+import {Component, OnInit} from '@angular/core';
+import {Case} from '../../models/covid19.model';
+import {Covid19Service} from '../../services/covid19.service';
 import sweetAlert from 'sweetalert2';
-import { Router, ActivatedRoute } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class CountriesComponent implements OnInit {
   currentPage: number = null;
 
   constructor(
-    private apiService: ApiService,
+    private covid19Service: Covid19Service,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     public translate: TranslateService
@@ -29,7 +29,7 @@ export class CountriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.apiService.getConfirmed()
+    this.covid19Service.getConfirmed()
       .subscribe(
         data => {
           data.map(d => {

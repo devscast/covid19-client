@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import L from 'leaflet';
 import sweetAlert from 'sweetalert2';
-import {ApiService} from '../../api.service';
-import {Case} from '../../api.model';
+import {Covid19Service} from '../../services/covid19.service';
+import {Case} from '../../models/covid19.model';
 
 @Component({
   selector: 'app-map',
@@ -15,14 +15,13 @@ export class MapComponent implements OnInit, OnDestroy {
   data: Case[];
   loading: boolean;
   error = false;
-  timer: any;
 
-  constructor(private apiService: ApiService) {
+  constructor(private covid19Service: Covid19Service) {
   }
 
   load() {
     this.loading = true;
-    this.apiService.getConfirmed()
+    this.covid19Service.getConfirmed()
       .subscribe(
         data => {
           this.data = data;
@@ -84,10 +83,8 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.load();
-    this.timer = setInterval(this.load, 300000);
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.timer);
   }
 }

@@ -1,9 +1,11 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Article, Dashboard, CongoCase} from 'src/app/api.model';
-import {ApiService} from 'src/app/api.service';
+import {Article, Dashboard, CongoCase} from '../../models/backend.model';
 import sweetAlert from 'sweetalert2';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
+
+import {BackendService} from '../../services/backend.service';
+import {Covid19Service} from '../../services/covid19.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,10 +18,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   error = false;
   drc: CongoCase;
   articles: Article[];
-  timer: any;
 
   constructor(
-    private apiService: ApiService,
+    private backendService: BackendService,
+    private covid19Service: Covid19Service,
     private domSanitizer: DomSanitizer,
     public translate: TranslateService,
   ) {
@@ -30,7 +32,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   loadArticles() {
-    this.apiService.getArticles()
+    this.backendService.getArticles()
       .subscribe(data => {
         this.articles = data;
         this.articles.forEach(a => {
@@ -43,13 +45,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   loadDRC() {
     this.loading = true;
-    this.apiService.getCongoCase()
-      .subscribe(data => this.drc = data);
+    this.backendService.getCongoCase().subscribe(data => this.drc = data);
   }
 
   load() {
     this.loading = true;
-    this.apiService.getDashboard()
+    this.covid19Service.getDashboard()
       .subscribe(
         data => {
           this.data = data;
@@ -71,10 +72,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.loadDRC();
     this.load();
     this.loadArticles();
-    this.timer = setInterval(this.load, 300000);
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.timer);
   }
 }
