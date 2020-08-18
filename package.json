@@ -20,7 +20,7 @@
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
     "@ngx-translate/core": "^12.1.2",
-    "@ngx-translate/http-loader": "^4.0.0",
+    "@ngx-translate/http-loader": "^5.0.0",
     "@sweetalert2/ngx-sweetalert2": "^8.0.0",
     "leaflet": "^1.6.0",
     "ngx-pagination": "^5.0.0",
