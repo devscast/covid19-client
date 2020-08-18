@@ -26,7 +26,7 @@
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.5.4",
     "sweetalert2": "^9.10.2",
-    "tailwindcss": "^1.2.0",
+    "tailwindcss": "^1.6.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.3"
   },
