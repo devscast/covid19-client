@@ -25,7 +25,7 @@
     "leaflet": "^1.6.0",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.5.4",
-    "sweetalert2": "^9.10.2",
+    "sweetalert2": "^9.17.2",
     "tailwindcss": "^1.6.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.3"
